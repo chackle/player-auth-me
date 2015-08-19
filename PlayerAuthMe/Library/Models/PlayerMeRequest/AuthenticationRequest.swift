@@ -10,7 +10,7 @@ import Foundation
 
 class AuthenticationRequest: PlayerMeRequest {
   
-  typealias AuthSuccessResponse = (result: AccessDetails) -> ()
+  typealias AuthSuccessResponse = (result: Player) -> ()
   typealias AuthFailureResponse = (error: NSError) -> ()
   
   private var successClosure: AuthSuccessResponse?
@@ -29,7 +29,7 @@ class AuthenticationRequest: PlayerMeRequest {
     return self
   }
   
-  func performSuccess(result: AccessDetails) {
+  func performSuccess(result: Player) {
     if let success = successClosure {
       success(result: result)
     }
@@ -40,9 +40,9 @@ class AuthenticationRequest: PlayerMeRequest {
     return self
   }
   
-  func performFailure() {
+  func performFailure(error: NSError) {
     if let failure = failureClosure {
-      failure(error: NSError())
+      failure(error: error)
     }
   }
 }

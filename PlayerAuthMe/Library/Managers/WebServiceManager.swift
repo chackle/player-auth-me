@@ -14,11 +14,32 @@ class WebServiceManager {
   private let sessionService: SessionService
   
   // Web Services
-  let authenticationService: AuthenticationService
+  let authenticationWebService: AuthenticationWebService
+  let playerWebService: PlayerWebService
   
   init(client: Client, sessionService: SessionService) {
     self.client = client
     self.sessionService = sessionService
-    self.authenticationService = AuthenticationService(client: self.client, sessionService: self.sessionService)
+    self.authenticationWebService = AuthenticationWebService(client: self.client, sessionService: self.sessionService)
+    self.playerWebService = PlayerWebService(client: self.client, sessionService: self.sessionService)
+  }
+  
+  // MARK: Authentication Requests
+  func authenticateUser(username: String, withPassword password: String) -> AuthenticationRequest {
+    return self.authenticationWebService.loginWithUsername(username, andPassword: password, andPlayerWebService: self.playerWebService)
+  }
+  
+  // MARK: Session Renewal Requests
+  func refreshAccessTokenForCurrentSession() -> RefreshTokenRequest {
+    return self.authenticationWebService.refreshAccessTokenForCurrentSession()
+  }
+  
+  // MARK: Player Requests
+  func requestPlayerWithId(id: Int) -> PlayerDetailsRequest {
+    return self.playerWebService.requestPlayerWithId(id)
+  }
+  
+  func requestPlayerSearch(searchQuery: String, andLimit limit: Int, andPage page: Int? = nil, orFrom from: Int? = nil) -> PlayerDetailsRequest {
+    return self.playerWebService.requestPlayerSearch(searchQuery, andLimit: limit, andPage: page, orFrom: from)
   }
 }

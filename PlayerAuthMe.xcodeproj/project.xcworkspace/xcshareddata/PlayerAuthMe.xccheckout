@@ -10,14 +10,14 @@
 	<string>PlayerAuthMe</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>2FDEB52540EA382123839AB29D7512BCD6340C8C</key>
+		<key>E62FF274053D90E33243ECF621892EF02ADC15B4</key>
 		<string>https://github.com/chackle/player-auth-me.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>PlayerAuthMe.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>2FDEB52540EA382123839AB29D7512BCD6340C8C</key>
+		<key>E62FF274053D90E33243ECF621892EF02ADC15B4</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,14 +25,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>2FDEB52540EA382123839AB29D7512BCD6340C8C</string>
+	<string>E62FF274053D90E33243ECF621892EF02ADC15B4</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>2FDEB52540EA382123839AB29D7512BCD6340C8C</string>
+			<string>E62FF274053D90E33243ECF621892EF02ADC15B4</string>
 			<key>IDESourceControlWCCName</key>
 			<string>PlayerAuthMe</string>
 		</dict>

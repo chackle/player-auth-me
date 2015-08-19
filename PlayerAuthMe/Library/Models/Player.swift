@@ -10,15 +10,51 @@ import Foundation
 
 class Player {
   
-  let name: String
+  let id: Int
+  let username: String
+  let shortDescription: String
+  let longDescription: String
+  let coverUrl: String
+  let avatarUrl: String
+  let isVerified: Bool
+  let isCurrentUser: Bool
+  let isFollowing: Bool
+  let isFollowed: Bool
+  let isFriend: Bool
+  let followersCount: Int
+  let followingCount: Int
   
-  init(name: String) {
-    self.name = name
+  init(id: Int, username: String, shortDescription: String, longDescription: String, coverUrl: String, avatarUrl: String, isVerified: Bool, isCurrentUser: Bool, isFollowing: Bool, isFollowed: Bool, isFriend: Bool, followersCount: Int, followingCount: Int) {
+    self.id = id
+    self.username = username
+    self.shortDescription = shortDescription
+    self.longDescription = longDescription
+    self.coverUrl = coverUrl
+    self.avatarUrl = avatarUrl
+    self.isVerified = isVerified
+    self.isCurrentUser = isCurrentUser
+    self.isFollowing = isFollowing
+    self.isFollowed = isFollowed
+    self.isFriend = isFriend
+    self.followersCount = followersCount
+    self.followingCount = followingCount
   }
   
   func toDictionary() -> [String:AnyObject] {
     return [
-      "name": name
+      "id": id,
+      "username": username,
+      "shortDescription": shortDescription,
+      "longDescription": longDescription,
+      "coverUrl": coverUrl,
+      "avatarUrl": avatarUrl,
+      "isVerified": isVerified,
+      "isCurrentUser": isCurrentUser,
+      "isFollowing": isFollowing,
+      "isFollowed": isFollowed,
+      "isFriend": isFriend,
+      "followersCount": followersCount,
+      "followingCount": followingCount
     ]
   }
 }

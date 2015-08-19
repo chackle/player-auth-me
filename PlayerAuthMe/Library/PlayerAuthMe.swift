@@ -23,12 +23,23 @@ class PlayerAuthMe {
     self.webServiceManager = WebServiceManager(client: self.client, sessionService: self.sessionService)
   }
   
+  // MARK: Authentication
   func authenticateUser(username: String, withPassword password: String) -> AuthenticationRequest {
-    return self.webServiceManager.authenticationService.loginWithUsername(username, andPassword: password)
+    return self.webServiceManager.authenticateUser(username, withPassword: password)
   }
   
+  // MARK: Session
   func refreshAccessTokenForCurrentSession() -> RefreshTokenRequest {
-    return self.webServiceManager.authenticationService.refreshAccessTokenForCurrentSession()
+    return self.webServiceManager.refreshAccessTokenForCurrentSession()
+  }
+  
+  // MARK: Player
+  func requestPlayerWithId(id: Int) -> PlayerDetailsRequest {
+    return self.webServiceManager.requestPlayerWithId(id)
+  }
+  
+  func requestPlayerSearch(searchQuery: String, andLimit limit: Int, andPage page: Int? = nil, orFrom from: Int? = nil) -> PlayerDetailsRequest {
+    return self.webServiceManager.requestPlayerSearch(searchQuery, andLimit: limit, andPage: page, orFrom: from)
   }
   
   func currentPlayer() -> Player? {

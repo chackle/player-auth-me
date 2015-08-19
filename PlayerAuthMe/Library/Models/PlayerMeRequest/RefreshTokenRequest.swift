@@ -40,9 +40,9 @@ class RefreshTokenRequest: PlayerMeRequest {
     return self
   }
   
-  func performFailure() {
+  func performFailure(error: NSError) {
     if let failure = failureClosure {
-      failure(error: NSError())
+      failure(error: error)
     }
   }
 }

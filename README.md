@@ -30,3 +30,36 @@ playerAuthMe.refreshAccessTokenForCurrentSession()
   println("Refresh error! \(error)")
 })
 ```
+
+# Getting a Specific User’s Info
+```swift
+playerAuthMe.requestPlayerWithId(1)
+.onSuccess { (players) -> () in
+  println("Have queried 1.. have gotten \(players[0].toDictionary())")
+}
+.onFailure { (error) -> () in
+  println("Request Player Error! \(error)")
+}
+```
+
+# Searching for a User based on a string
+```swift
+playerAuthMe.requestPlayerSearch("cha", andLimit: 20, andPage: 1)
+.onSuccess { (players) -> () in
+  println("Have queried 'cha'.. have gotten \(players)")
+}
+.onFailure { (error) -> () in
+  println("Search Players Error! \(error)")
+}
+```
+
+# ..or a query!
+```swift
+playerAuthMe.requestPlayerSearch(FilterType.Popular, andLimit: 20, andPage: 1)
+.onSuccess { (players) -> () in
+  println("Have queried ‘_filter:popular’.. have gotten \(players)")
+}
+.onFailure { (error) -> () in
+  println("Search Players Error! \(error)")
+}
+```

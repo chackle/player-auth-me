@@ -1,5 +1,5 @@
 //
-//  AuthenticationService.swift
+//  AuthenticationWebService.swift
 //  PlayerAuthMe
 //
 //  Created by Michael Green on 14/08/2015.
@@ -8,17 +8,9 @@
 
 import Foundation
 
-class AuthenticationService {
+class AuthenticationWebService: WebService {
   
-  private let client: Client
-  private let sessionService: SessionService
-  
-  init(client: Client, sessionService: SessionService) {
-    self.client = client
-    self.sessionService = sessionService
-  }
-  
-  func loginWithUsername(username: String, andPassword password: String) -> AuthenticationRequest {
+  func loginWithUsername(username: String, andPassword password: String, andPlayerWebService playerWebService: PlayerWebService) -> AuthenticationRequest {
     let parameters = [
       "grant_type": "password",
       "client_id": client.id,
@@ -41,7 +33,8 @@ class AuthenticationService {
     let task = session.dataTaskWithRequest(request) { (data: NSData!, response: NSURLResponse!, error: NSError!) in
       
       if error != nil {
-        request.performFailure()
+        // Replace error with meaningful NSError
+        request.performFailure(error)
       }
       
       var jsonError: NSError?
@@ -54,10 +47,26 @@ class AuthenticationService {
         expiresIn = decodedJson["expires_in"] as? Double {
           let expires = NSDate(timeIntervalSince1970: expiresInterval)
           let accessDetails = AccessDetails(accessToken: accessToken, refreshToken: refreshToken, tokenType: tokenType, expires: expires, expiresIn: expiresIn)
-          let player = Player(name: username)
-          self.sessionService.startSession(player, accessDetails: accessDetails)
-          request.performSuccess(accessDetails)
+          playerWebService.requestCurrentPlayer()
+          .onSuccess({ (players) -> () in
+            if players.count == 1 {
+              let currentPlayer = players[0]
+              self.sessionService.startSession(currentPlayer, accessDetails: accessDetails)
+              request.performSuccess(currentPlayer)
+            } else {
+              request.performFailure(NSError())
+            }
+          })
+          .onFailure({ (error) -> () in
+            request.performFailure(error)
+          })
+        } else {
+          // Replace error with meaningful NSError
+          request.performFailure(NSError())
         }
+      } else {
+        // Replace error with meaningful NSError
+        request.performFailure(NSError())
       }
     }
     
@@ -66,10 +75,7 @@ class AuthenticationService {
   }
   
   func refreshAccessTokenForCurrentSession() -> RefreshTokenRequest {
-    var refreshToken = ""
-    if let currentSession = sessionService.session {
-      refreshToken = currentSession.accessDetails.refreshToken
-    }
+    let refreshToken = currentRefreshToken()
     let parameters = [
       "grant_type": "refresh_token",
       "client_id": client.id,
@@ -91,7 +97,7 @@ class AuthenticationService {
     let task = session.dataTaskWithRequest(request) { (data: NSData!, response: NSURLResponse!, error: NSError!) in
       
       if error != nil {
-        request.performFailure()
+        request.performFailure(error)
       }
       
       var jsonError: NSError?
@@ -114,7 +120,7 @@ class AuthenticationService {
     } else {
       // Throw real error here
       println("Invalid refreshToken. Aborting request!")
-      request.performFailure()
+      request.performFailure(NSError())
     }
     return request
   }

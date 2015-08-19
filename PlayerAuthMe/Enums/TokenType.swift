@@ -14,5 +14,5 @@ enum TokenType: String {
   case Invalid = "invalid"
   
   static let allValues = [Bearer]
-  static let allRawValues = ["bearer"]
+  static let allRawValues = [Bearer.rawValue]
 }
