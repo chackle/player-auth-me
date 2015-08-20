@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C1D19491B861A63005C0618 /* FilterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1D19471B861A63005C0618 /* FilterType.swift */; };
+		4C1D194A1B861A63005C0618 /* TokenType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1D19481B861A63005C0618 /* TokenType.swift */; };
+		4C1D194F1B861F35005C0618 /* AuthenticationWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1D194C1B861F35005C0618 /* AuthenticationWebService.swift */; };
+		4C1D19501B861F35005C0618 /* PlayerWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1D194D1B861F35005C0618 /* PlayerWebService.swift */; };
+		4C1D19511B861F35005C0618 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1D194E1B861F35005C0618 /* WebService.swift */; };
+		4C1D19531B862086005C0618 /* ExampleHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1D19521B862086005C0618 /* ExampleHomeViewController.swift */; };
 		54116C691B84E736009D33D3 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54116C681B84E736009D33D3 /* Session.swift */; };
 		541921421B82444D00E1B554 /* RefreshTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541921411B82444D00E1B554 /* RefreshTokenRequest.swift */; };
 		541921441B82454B00E1B554 /* SessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541921431B82454B00E1B554 /* SessionService.swift */; };
@@ -15,11 +21,7 @@
 		547FC7921B7F80CE00BA4C3F /* AccessDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547FC7911B7F80CE00BA4C3F /* AccessDetails.swift */; };
 		547FC7981B7F850000BA4C3F /* PlayerMeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547FC7971B7F850000BA4C3F /* PlayerMeRequest.swift */; };
 		547FC79A1B7F85C200BA4C3F /* AuthenticationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547FC7991B7F85C200BA4C3F /* AuthenticationRequest.swift */; };
-		547FC79D1B7F8B8A00BA4C3F /* TokenType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547FC79C1B7F8B8A00BA4C3F /* TokenType.swift */; };
 		54B4A6401B84FAA80021A5D1 /* PlayerDetailsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B4A63F1B84FAA80021A5D1 /* PlayerDetailsRequest.swift */; };
-		54B4A6421B84FC360021A5D1 /* PlayerWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B4A6411B84FC360021A5D1 /* PlayerWebService.swift */; };
-		54B4A6441B8512020021A5D1 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B4A6431B8512020021A5D1 /* WebService.swift */; };
-		54B4A6461B8519B80021A5D1 /* FilterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B4A6451B8519B80021A5D1 /* FilterType.swift */; };
 		54BC1FB91B7E5989001B884B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BC1FB81B7E5989001B884B /* AppDelegate.swift */; };
 		54BC1FBE1B7E5989001B884B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54BC1FBC1B7E5989001B884B /* Main.storyboard */; };
 		54BC1FC01B7E5989001B884B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54BC1FBF1B7E5989001B884B /* Images.xcassets */; };
@@ -28,7 +30,6 @@
 		54BC1FDB1B7E59C2001B884B /* ExampleLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BC1FDA1B7E59C2001B884B /* ExampleLoginViewController.swift */; };
 		54BC1FE01B7E5A2B001B884B /* PlayerAuthMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BC1FDF1B7E5A2B001B884B /* PlayerAuthMe.swift */; };
 		54BC1FE31B7E5A90001B884B /* WebServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BC1FE21B7E5A90001B884B /* WebServiceManager.swift */; };
-		54BC1FE51B7E5AB2001B884B /* AuthenticationWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BC1FE41B7E5AB2001B884B /* AuthenticationWebService.swift */; };
 		54BC1FE71B7E5B15001B884B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BC1FE61B7E5B15001B884B /* Constants.swift */; };
 		54BC1FE91B7E5DDB001B884B /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BC1FE81B7E5DDB001B884B /* Client.swift */; };
 /* End PBXBuildFile section */
@@ -44,6 +45,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4C1D19471B861A63005C0618 /* FilterType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FilterType.swift; path = Library/Enums/FilterType.swift; sourceTree = "<group>"; };
+		4C1D19481B861A63005C0618 /* TokenType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TokenType.swift; path = Library/Enums/TokenType.swift; sourceTree = "<group>"; };
+		4C1D194C1B861F35005C0618 /* AuthenticationWebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticationWebService.swift; path = Library/Services/WebServices/AuthenticationWebService.swift; sourceTree = "<group>"; };
+		4C1D194D1B861F35005C0618 /* PlayerWebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayerWebService.swift; path = Library/Services/WebServices/PlayerWebService.swift; sourceTree = "<group>"; };
+		4C1D194E1B861F35005C0618 /* WebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebService.swift; path = Library/Services/WebServices/WebService.swift; sourceTree = "<group>"; };
+		4C1D19521B862086005C0618 /* ExampleHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExampleHomeViewController.swift; path = Example/ExampleHomeViewController.swift; sourceTree = "<group>"; };
 		54116C681B84E736009D33D3 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Session.swift; path = Library/Models/Session.swift; sourceTree = "<group>"; };
 		541921411B82444D00E1B554 /* RefreshTokenRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RefreshTokenRequest.swift; path = Library/Models/PlayerMeRequest/RefreshTokenRequest.swift; sourceTree = "<group>"; };
 		541921431B82454B00E1B554 /* SessionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionService.swift; path = Library/Services/SessionService.swift; sourceTree = "<group>"; };
@@ -52,11 +59,7 @@
 		547FC7911B7F80CE00BA4C3F /* AccessDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccessDetails.swift; path = Library/Models/AccessDetails.swift; sourceTree = "<group>"; };
 		547FC7971B7F850000BA4C3F /* PlayerMeRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayerMeRequest.swift; path = Library/Models/PlayerMeRequest/PlayerMeRequest.swift; sourceTree = "<group>"; };
 		547FC7991B7F85C200BA4C3F /* AuthenticationRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticationRequest.swift; path = Library/Models/PlayerMeRequest/AuthenticationRequest.swift; sourceTree = "<group>"; };
-		547FC79C1B7F8B8A00BA4C3F /* TokenType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TokenType.swift; path = Enums/TokenType.swift; sourceTree = "<group>"; };
 		54B4A63F1B84FAA80021A5D1 /* PlayerDetailsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayerDetailsRequest.swift; path = Library/Models/PlayerMeRequest/PlayerDetailsRequest.swift; sourceTree = "<group>"; };
-		54B4A6411B84FC360021A5D1 /* PlayerWebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayerWebService.swift; path = Library/Services/PlayerWebService.swift; sourceTree = "<group>"; };
-		54B4A6431B8512020021A5D1 /* WebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebService.swift; path = Library/Services/WebService.swift; sourceTree = "<group>"; };
-		54B4A6451B8519B80021A5D1 /* FilterType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FilterType.swift; path = Enums/FilterType.swift; sourceTree = "<group>"; };
 		54BC1FB31B7E5989001B884B /* PlayerAuthMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlayerAuthMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54BC1FB71B7E5989001B884B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		54BC1FB81B7E5989001B884B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -69,7 +72,6 @@
 		54BC1FDA1B7E59C2001B884B /* ExampleLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExampleLoginViewController.swift; path = Example/ExampleLoginViewController.swift; sourceTree = "<group>"; };
 		54BC1FDF1B7E5A2B001B884B /* PlayerAuthMe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayerAuthMe.swift; path = Library/PlayerAuthMe.swift; sourceTree = "<group>"; };
 		54BC1FE21B7E5A90001B884B /* WebServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebServiceManager.swift; path = Library/Managers/WebServiceManager.swift; sourceTree = "<group>"; };
-		54BC1FE41B7E5AB2001B884B /* AuthenticationWebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticationWebService.swift; path = Library/Services/AuthenticationWebService.swift; sourceTree = "<group>"; };
 		54BC1FE61B7E5B15001B884B /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Library/Constants/Constants.swift; sourceTree = "<group>"; };
 		54BC1FE81B7E5DDB001B884B /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Client.swift; path = Library/Models/Client.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -92,6 +94,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C1D194B1B861F2C005C0618 /* WebServices */ = {
+			isa = PBXGroup;
+			children = (
+				4C1D194C1B861F35005C0618 /* AuthenticationWebService.swift */,
+				4C1D194D1B861F35005C0618 /* PlayerWebService.swift */,
+				4C1D194E1B861F35005C0618 /* WebService.swift */,
+			);
+			name = WebServices;
+			sourceTree = "<group>";
+		};
 		547FC78D1B7F7D7E00BA4C3F /* PlayerMeRequests */ = {
 			isa = PBXGroup;
 			children = (
@@ -113,8 +125,8 @@
 		547FC79B1B7F8B7300BA4C3F /* Enums */ = {
 			isa = PBXGroup;
 			children = (
-				547FC79C1B7F8B8A00BA4C3F /* TokenType.swift */,
-				54B4A6451B8519B80021A5D1 /* FilterType.swift */,
+				4C1D19471B861A63005C0618 /* FilterType.swift */,
+				4C1D19481B861A63005C0618 /* TokenType.swift */,
 			);
 			name = Enums;
 			sourceTree = "<group>";
@@ -194,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				54BC1FDA1B7E59C2001B884B /* ExampleLoginViewController.swift */,
+				4C1D19521B862086005C0618 /* ExampleHomeViewController.swift */,
 			);
 			name = Example;
 			sourceTree = "<group>";
@@ -229,11 +242,9 @@
 		54BC1FE11B7E5A58001B884B /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				54BC1FE41B7E5AB2001B884B /* AuthenticationWebService.swift */,
+				4C1D194B1B861F2C005C0618 /* WebServices */,
 				541921431B82454B00E1B554 /* SessionService.swift */,
 				541921471B82469900E1B554 /* PersistentStorageService.swift */,
-				54B4A6411B84FC360021A5D1 /* PlayerWebService.swift */,
-				54B4A6431B8512020021A5D1 /* WebService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -338,26 +349,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C1D194F1B861F35005C0618 /* AuthenticationWebService.swift in Sources */,
+				4C1D19531B862086005C0618 /* ExampleHomeViewController.swift in Sources */,
 				541921481B82469900E1B554 /* PersistentStorageService.swift in Sources */,
 				547FC7981B7F850000BA4C3F /* PlayerMeRequest.swift in Sources */,
 				541921421B82444D00E1B554 /* RefreshTokenRequest.swift in Sources */,
 				54B4A6401B84FAA80021A5D1 /* PlayerDetailsRequest.swift in Sources */,
 				54BC1FE31B7E5A90001B884B /* WebServiceManager.swift in Sources */,
-				547FC79D1B7F8B8A00BA4C3F /* TokenType.swift in Sources */,
+				4C1D19501B861F35005C0618 /* PlayerWebService.swift in Sources */,
 				541921461B8245E200E1B554 /* Player.swift in Sources */,
 				54BC1FDB1B7E59C2001B884B /* ExampleLoginViewController.swift in Sources */,
 				54BC1FE01B7E5A2B001B884B /* PlayerAuthMe.swift in Sources */,
 				54BC1FE91B7E5DDB001B884B /* Client.swift in Sources */,
+				4C1D194A1B861A63005C0618 /* TokenType.swift in Sources */,
 				541921441B82454B00E1B554 /* SessionService.swift in Sources */,
-				54B4A6441B8512020021A5D1 /* WebService.swift in Sources */,
 				547FC7921B7F80CE00BA4C3F /* AccessDetails.swift in Sources */,
 				54BC1FB91B7E5989001B884B /* AppDelegate.swift in Sources */,
 				54116C691B84E736009D33D3 /* Session.swift in Sources */,
-				54B4A6461B8519B80021A5D1 /* FilterType.swift in Sources */,
-				54BC1FE51B7E5AB2001B884B /* AuthenticationWebService.swift in Sources */,
-				54B4A6421B84FC360021A5D1 /* PlayerWebService.swift in Sources */,
 				54BC1FE71B7E5B15001B884B /* Constants.swift in Sources */,
 				547FC79A1B7F85C200BA4C3F /* AuthenticationRequest.swift in Sources */,
+				4C1D19511B861F35005C0618 /* WebService.swift in Sources */,
+				4C1D19491B861A63005C0618 /* FilterType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

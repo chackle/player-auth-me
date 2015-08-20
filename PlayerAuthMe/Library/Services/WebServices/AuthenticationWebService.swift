@@ -54,7 +54,7 @@ class AuthenticationWebService: WebService {
               self.sessionService.startSession(currentPlayer, accessDetails: accessDetails)
               request.performSuccess(currentPlayer)
             } else {
-              request.performFailure(NSError())
+              request.performFailure(kGenericError)
             }
           })
           .onFailure({ (error) -> () in
@@ -62,11 +62,11 @@ class AuthenticationWebService: WebService {
           })
         } else {
           // Replace error with meaningful NSError
-          request.performFailure(NSError())
+          request.performFailure(kGenericError)
         }
       } else {
         // Replace error with meaningful NSError
-        request.performFailure(NSError())
+        request.performFailure(kGenericError)
       }
     }
     
@@ -74,8 +74,8 @@ class AuthenticationWebService: WebService {
     return request
   }
   
-  func refreshAccessTokenForCurrentSession() -> RefreshTokenRequest {
-    let refreshToken = currentRefreshToken()
+  func refreshAccessTokenForSession(session: Session) -> RefreshTokenRequest {
+    let refreshToken = session.accessDetails.refreshToken
     let parameters = [
       "grant_type": "refresh_token",
       "client_id": client.id,
@@ -115,13 +115,7 @@ class AuthenticationWebService: WebService {
       }
     }
     
-    if refreshToken != "" {
-      task.resume()
-    } else {
-      // Throw real error here
-      println("Invalid refreshToken. Aborting request!")
-      request.performFailure(NSError())
-    }
+    task.resume()
     return request
   }
 }

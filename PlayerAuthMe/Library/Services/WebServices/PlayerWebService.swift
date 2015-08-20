@@ -11,7 +11,6 @@ import Foundation
 class PlayerWebService: WebService {
   
   func requestPlayer(userId: Int? = nil) -> PlayerDetailsRequest {
-    let accessToken = currentAccessToken()
     var urlString = "\(kPlayerMeApiBaseHost)/v1/users"
     if let id = userId {
       urlString = "\(urlString)/\(id)"
@@ -22,7 +21,6 @@ class PlayerWebService: WebService {
     var err: NSError?
     let request = PlayerDetailsRequest(URL: url)
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-    request.addValue(accessToken, forHTTPHeaderField: "Authorization")
     
     if err != nil {
       // implement
@@ -33,7 +31,7 @@ class PlayerWebService: WebService {
       
       if error != nil {
         // Replace error with meaningful NSError
-        request.performFailure(NSError())
+        request.performFailure(kGenericError)
       }
       
       var jsonError: NSError?
@@ -57,11 +55,11 @@ class PlayerWebService: WebService {
             request.performSuccess([player])
         } else {
           // Replace error with meaningful NSError
-          request.performFailure(NSError())
+          request.performFailure(kGenericError)
         }
       } else {
         // Replace error with meaningful NSError
-        request.performFailure(NSError())
+        request.performFailure(kGenericError)
       }
     }
     
@@ -69,14 +67,14 @@ class PlayerWebService: WebService {
     return request
   }
   
-  func requestPlayers(parameters: [NSURLQueryItem]) -> PlayerDetailsRequest {
-    let accessToken = currentAccessToken()
-    var urlString = "\(kPlayerMeApiBaseHost)/v1/users"
+  func requestPlayers(urlString: String, withParameters parameters: [NSURLQueryItem]? = nil, usingActiveSession activeSession: Session? = nil) -> PlayerDetailsRequest {
     let urlComponents = NSURLComponents(string: urlString)!
     urlComponents.queryItems = parameters
     let request = PlayerDetailsRequest(URL: urlComponents.URL!)
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-    request.addValue(accessToken, forHTTPHeaderField: "Authorization")
+    if let session = activeSession {
+      request.addValue(session.accessDetails.accessToken, forHTTPHeaderField: "Authorization")
+    }
     
     let session = NSURLSession.sharedSession()
     let task = session.dataTaskWithRequest(request) { (data: NSData!, response: NSURLResponse!, error: NSError!) in
@@ -105,13 +103,13 @@ class PlayerWebService: WebService {
               players.append(player)
           } else {
             // Replace error with meaningful NSError
-            request.performFailure(NSError())
+            request.performFailure(kGenericError)
           }
         }
         request.performSuccess(players)
-        }} else {
+      }} else {
         // Replace error with meaningful NSError
-        request.performFailure(NSError(domain: "tes", code: 1, userInfo: nil))
+        request.performFailure(kGenericError)
       }
     }
     
@@ -137,6 +135,13 @@ class PlayerWebService: WebService {
     } else if let f = from {
       NSURLQueryItem(name: "_from", value: "\(f)")
     }
-    return requestPlayers(parameters)
+    let url = "\(kPlayerMeApiBaseHost)/v1/users"
+    return requestPlayers(url, withParameters: parameters)
+  }
+  
+  func requestOnlinePlayersForSession(session: Session) -> PlayerDetailsRequest {
+    // MARK: TODO still needs implemented
+    let url = "\(kPlayerMeApiBaseHost)/v1/users/online"
+    return requestPlayers(url)
   }
 }

@@ -56,4 +56,9 @@ class PersistentStorageService {
     }
     return nil
   }
+  
+  func clearCurrentSession() {
+    self.userDefaults.removeObjectForKey(kStoredSessionKey)
+    self.userDefaults.synchronize()
+  }
 }

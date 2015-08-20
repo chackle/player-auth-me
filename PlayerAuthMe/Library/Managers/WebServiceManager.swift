@@ -30,8 +30,8 @@ class WebServiceManager {
   }
   
   // MARK: Session Renewal Requests
-  func refreshAccessTokenForCurrentSession() -> RefreshTokenRequest {
-    return self.authenticationWebService.refreshAccessTokenForCurrentSession()
+  func refreshAccessTokenForSession(session: Session) -> RefreshTokenRequest {
+    return self.authenticationWebService.refreshAccessTokenForSession(session)
   }
   
   // MARK: Player Requests
@@ -41,5 +41,9 @@ class WebServiceManager {
   
   func requestPlayerSearch(searchQuery: String, andLimit limit: Int, andPage page: Int? = nil, orFrom from: Int? = nil) -> PlayerDetailsRequest {
     return self.playerWebService.requestPlayerSearch(searchQuery, andLimit: limit, andPage: page, orFrom: from)
+  }
+  
+  func requestOnlinePlayersForSession(session: Session) -> PlayerDetailsRequest {
+    return self.playerWebService.requestOnlinePlayersForSession(session)
   }
 }

@@ -29,8 +29,8 @@ class PlayerAuthMe {
   }
   
   // MARK: Session
-  func refreshAccessTokenForCurrentSession() -> RefreshTokenRequest {
-    return self.webServiceManager.refreshAccessTokenForCurrentSession()
+  func refreshAccessTokenForSession(session: Session) -> RefreshTokenRequest {
+    return self.webServiceManager.refreshAccessTokenForSession(session)
   }
   
   // MARK: Player
@@ -40,6 +40,10 @@ class PlayerAuthMe {
   
   func requestPlayerSearch(searchQuery: String, andLimit limit: Int, andPage page: Int? = nil, orFrom from: Int? = nil) -> PlayerDetailsRequest {
     return self.webServiceManager.requestPlayerSearch(searchQuery, andLimit: limit, andPage: page, orFrom: from)
+  }
+  
+  func requestOnlinePlayersForSession(session: Session) -> PlayerDetailsRequest {
+    return self.webServiceManager.requestOnlinePlayersForSession(session)
   }
   
   func currentPlayer() -> Player? {
@@ -66,5 +70,13 @@ class PlayerAuthMe {
       println("*** clientSecret is empty. A valid clientSecret must be set before using OAuth services ***")
     }
     return self.client.secret
+  }
+  
+  func activeSession() -> Session? {
+    return sessionService.session
+  }
+  
+  func endSession() {
+    sessionService.endSession()
   }
 }

@@ -19,10 +19,6 @@ class SessionService {
     self.session = self.storageService.loadCurrentSession()
   }
   
-  func loadPreviousSession() {
-    
-  }
-  
   func startSession(player: Player, accessDetails: AccessDetails) {
     session = Session(player: player, accessDetails: accessDetails)
     storageService.storeCurrentSession(session!)
@@ -35,11 +31,8 @@ class SessionService {
     }
   }
   
-  func resumeSession() {
-    
-  }
-  
   func endSession() {
-    
+    storageService.clearCurrentSession()
+    session = nil
   }
 }
