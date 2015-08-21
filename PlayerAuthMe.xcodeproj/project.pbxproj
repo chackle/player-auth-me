@@ -13,6 +13,7 @@
 		4C1D19501B861F35005C0618 /* PlayerWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1D194D1B861F35005C0618 /* PlayerWebService.swift */; };
 		4C1D19511B861F35005C0618 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1D194E1B861F35005C0618 /* WebService.swift */; };
 		4C1D19531B862086005C0618 /* ExampleHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1D19521B862086005C0618 /* ExampleHomeViewController.swift */; };
+		5404564C1B87B82200A23568 /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5404564B1B87B82200A23568 /* RequestType.swift */; };
 		54116C691B84E736009D33D3 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54116C681B84E736009D33D3 /* Session.swift */; };
 		541921421B82444D00E1B554 /* RefreshTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541921411B82444D00E1B554 /* RefreshTokenRequest.swift */; };
 		541921441B82454B00E1B554 /* SessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541921431B82454B00E1B554 /* SessionService.swift */; };
@@ -51,6 +52,7 @@
 		4C1D194D1B861F35005C0618 /* PlayerWebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayerWebService.swift; path = Library/Services/WebServices/PlayerWebService.swift; sourceTree = "<group>"; };
 		4C1D194E1B861F35005C0618 /* WebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebService.swift; path = Library/Services/WebServices/WebService.swift; sourceTree = "<group>"; };
 		4C1D19521B862086005C0618 /* ExampleHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExampleHomeViewController.swift; path = Example/ExampleHomeViewController.swift; sourceTree = "<group>"; };
+		5404564B1B87B82200A23568 /* RequestType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestType.swift; path = Library/Enums/RequestType.swift; sourceTree = "<group>"; };
 		54116C681B84E736009D33D3 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Session.swift; path = Library/Models/Session.swift; sourceTree = "<group>"; };
 		541921411B82444D00E1B554 /* RefreshTokenRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RefreshTokenRequest.swift; path = Library/Models/PlayerMeRequest/RefreshTokenRequest.swift; sourceTree = "<group>"; };
 		541921431B82454B00E1B554 /* SessionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionService.swift; path = Library/Services/SessionService.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 			children = (
 				4C1D19471B861A63005C0618 /* FilterType.swift */,
 				4C1D19481B861A63005C0618 /* TokenType.swift */,
+				5404564B1B87B82200A23568 /* RequestType.swift */,
 			);
 			name = Enums;
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 				54116C691B84E736009D33D3 /* Session.swift in Sources */,
 				54BC1FE71B7E5B15001B884B /* Constants.swift in Sources */,
 				547FC79A1B7F85C200BA4C3F /* AuthenticationRequest.swift in Sources */,
+				5404564C1B87B82200A23568 /* RequestType.swift in Sources */,
 				4C1D19511B861F35005C0618 /* WebService.swift in Sources */,
 				4C1D19491B861A63005C0618 /* FilterType.swift in Sources */,
 			);
