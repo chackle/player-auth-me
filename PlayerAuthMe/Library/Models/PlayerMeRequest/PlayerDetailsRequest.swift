@@ -11,10 +11,8 @@ import Foundation
 class PlayerDetailsRequest: PlayerMeRequest {
   
   typealias PlayerDetailsSuccessResponse = (players: [Player]) -> ()
-  typealias PlayerDetailsFailureResponse = (error: NSError) -> ()
   
   private var successClosure: PlayerDetailsSuccessResponse?
-  private var failureClosure: PlayerDetailsFailureResponse?
   
   override init(URL: NSURL) {
     super.init(URL: URL)
@@ -35,14 +33,8 @@ class PlayerDetailsRequest: PlayerMeRequest {
     }
   }
   
-  func onFailure(response: PlayerDetailsFailureResponse) -> PlayerDetailsRequest {
+  override func onFailure(response: RequestFailureResponse) -> PlayerDetailsRequest {
     self.failureClosure = response
     return self
-  }
-  
-  func performFailure(error: NSError) {
-    if let failure = failureClosure {
-      failure(error: error)
-    }
   }
 }

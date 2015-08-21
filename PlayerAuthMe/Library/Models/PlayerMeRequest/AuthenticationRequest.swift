@@ -11,10 +11,8 @@ import Foundation
 class AuthenticationRequest: PlayerMeRequest {
   
   typealias AuthSuccessResponse = (result: Player) -> ()
-  typealias AuthFailureResponse = (error: NSError) -> ()
   
   private var successClosure: AuthSuccessResponse?
-  private var failureClosure: AuthFailureResponse?
   
   override init(URL: NSURL) {
     super.init(URL: URL)
@@ -35,14 +33,8 @@ class AuthenticationRequest: PlayerMeRequest {
     }
   }
   
-  func onFailure(response: AuthFailureResponse) -> AuthenticationRequest {
+  override func onFailure(response: RequestFailureResponse) -> AuthenticationRequest {
     self.failureClosure = response
     return self
-  }
-  
-  func performFailure(error: NSError) {
-    if let failure = failureClosure {
-      failure(error: error)
-    }
   }
 }

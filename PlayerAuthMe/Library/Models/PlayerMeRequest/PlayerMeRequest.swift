@@ -10,6 +10,10 @@ import Foundation
 
 class PlayerMeRequest: NSMutableURLRequest {
   
+  typealias RequestFailureResponse = (error: NSError) -> ()
+  
+  var failureClosure: RequestFailureResponse?
+  
   private let kDefaultTimeoutInterval: NSTimeInterval = 60
   
   override init(URL: NSURL, cachePolicy: NSURLRequestCachePolicy, timeoutInterval: NSTimeInterval) {
@@ -22,5 +26,16 @@ class PlayerMeRequest: NSMutableURLRequest {
 
   required init(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
+  }
+  
+  func onFailure(response: RequestFailureResponse) -> PlayerMeRequest {
+    self.failureClosure = response
+    return self
+  }
+  
+  func performFailure(error: NSError) {
+    if let failure = failureClosure {
+      failure(error: error)
+    }
   }
 }
