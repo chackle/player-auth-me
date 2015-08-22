@@ -43,7 +43,7 @@ class WebServiceManager {
     return self.playerWebService.requestPlayerSearch(searchQuery, andLimit: limit, andPage: page, orFrom: from)
   }
   
-  func requestOnlinePlayersForSession(session: Session) -> PlayerDetailsRequest {
-    return self.playerWebService.requestOnlinePlayersForSession(session)
+  func requestOnlineFollowedPlayersForSession(session: Session) -> PlayerDetailsRequest {
+    return self.playerWebService.requestOnlineFollowedPlayersForSession(session)
   }
 }

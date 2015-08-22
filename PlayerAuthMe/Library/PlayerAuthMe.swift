@@ -42,8 +42,8 @@ class PlayerAuthMe {
     return self.webServiceManager.requestPlayerSearch(searchQuery, andLimit: limit, andPage: page, orFrom: from)
   }
   
-  func requestOnlinePlayersForSession(session: Session) -> PlayerDetailsRequest {
-    return self.webServiceManager.requestOnlinePlayersForSession(session)
+  func requestOnlineFollowedPlayersForSession(session: Session) -> PlayerDetailsRequest {
+    return self.webServiceManager.requestOnlineFollowedPlayersForSession(session)
   }
   
   func currentPlayer() -> Player? {

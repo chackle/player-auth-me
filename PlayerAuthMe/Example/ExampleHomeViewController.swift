@@ -33,16 +33,13 @@ class ExampleHomeViewController: UIViewController {
         self.logout()
       })
       
-      // MARK: TODO - Still needs implemented
-      /*
-      playerAuthMe.requestOnlinePlayersForSession(session)
+      playerAuthMe.requestOnlineFollowedPlayersForSession(session)
       .onSuccess({ (players) -> () in
-        println("Request online players success! \(players)")
+        println("Request online players success \(players)")
       })
       .onFailure({ (error) -> () in
         println("Request online players error \(error)")
       })
-      */
     }
   }
   

@@ -120,9 +120,35 @@ class PlayerWebService: WebService {
     return requestPlayers(url, withParameters: parameters)
   }
   
-  func requestOnlinePlayersForSession(session: Session) -> PlayerDetailsRequest {
-    // MARK: TODO still needs implemented
+  func requestOnlineFollowedPlayersForSession(session: Session) -> PlayerDetailsRequest {
     let url = "\(kPlayerMeApiBaseHost)/v1/users/online"
-    return requestPlayers(url)
+    let request = PlayerDetailsRequest(URL: NSURL(string: url)!)
+    request.prepare(RequestType.GET, usingSession: session)
+    request.startWithCompletionHandler { (data, response, error) -> Void in
+      if error != nil {
+        request.performFailure(error)
+      }
+      var jsonError: NSError?
+      if let decodedJson = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &jsonError) as? [String:AnyObject] {
+        if let results = decodedJson["results"] as? [Int] {
+          var followedPlayers = [Player]()
+          for result in results {
+            self.requestPlayerWithId(result)
+            .onSuccess({ (players) -> () in
+              followedPlayers.append(players[0])
+              if followedPlayers.count == results.count {
+                request.performSuccess(followedPlayers)
+              }
+            })
+            .onFailure({ (error) -> () in
+              request.performFailure(error)
+            })
+          }
+        }
+      } else {
+        request.performFailure(jsonError!)
+      }
+    }
+    return request
   }
 }

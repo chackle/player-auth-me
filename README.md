@@ -72,3 +72,18 @@ playerAuthMe.requestPlayerSearch(FilterType.Popular.rawValue, andLimit: 20, andP
   println("Search Players Error! \(error)")
 }
 ```
+
+# Getting all current user’s followed players online
+This is a chained request with three stages in order to return the data requested.
+1. Requests the user ids for the logged in user’s online followed list.
+2. Creates a call for each user, piggy backing off `requestPlayerWithId`.
+3. Returns full details of all requested players.
+```swift
+playerAuthMe.requestOnlineFollowedPlayersForSession(session)
+.onSuccess({ (players) -> () in
+  println("Request online players success \(players)")
+})
+.onFailure({ (error) -> () in
+  println("Request online players error \(error)")
+})
+```
