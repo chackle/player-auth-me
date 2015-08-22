@@ -132,17 +132,21 @@ class PlayerWebService: WebService {
       if let decodedJson = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &jsonError) as? [String:AnyObject] {
         if let results = decodedJson["results"] as? [Int] {
           var followedPlayers = [Player]()
-          for result in results {
-            self.requestPlayerWithId(result)
-            .onSuccess({ (players) -> () in
-              followedPlayers.append(players[0])
-              if followedPlayers.count == results.count {
-                request.performSuccess(followedPlayers)
-              }
-            })
-            .onFailure({ (error) -> () in
-              request.performFailure(error)
-            })
+          if results.count == 0 {
+            request.performSuccess(followedPlayers)
+          } else {
+            for result in results {
+              self.requestPlayerWithId(result)
+              .onSuccess({ (players) -> () in
+                followedPlayers.append(players[0])
+                if followedPlayers.count == results.count {
+                  request.performSuccess(followedPlayers)
+                }
+              })
+              .onFailure({ (error) -> () in
+                request.performFailure(error)
+              })
+            }
           }
         }
       } else {
