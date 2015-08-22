@@ -17,8 +17,8 @@ class ExampleLoginViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    playerAuthMe.clientId("your_client_id")
-    playerAuthMe.clientSecret("your_client_secret")
+    playerAuthMe.clientId("U6Rz68pgXgXFwv4Pg0k8GC0q10bMncxMksJEAa9L")
+    playerAuthMe.clientSecret("BqWENodf5be3hhIwfy0j25Y9BB2edAMjfMhftBEQ")
   }
   
   override func viewDidAppear(animated: Bool) {

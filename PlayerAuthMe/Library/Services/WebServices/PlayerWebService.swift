@@ -10,25 +10,16 @@ import Foundation
 
 class PlayerWebService: WebService {
   
-  func requestPlayer(userId: Int? = nil) -> PlayerDetailsRequest {
-    var urlString = "\(kPlayerMeApiBaseHost)/v1/users"
+  private func requestPlayer(urlString: String, userId: Int? = nil) -> PlayerDetailsRequest {
+    var url = urlString
     if let id = userId {
-      urlString = "\(urlString)/\(id)"
+      url = "\(urlString)/\(id)"
     } else {
-      urlString = "\(urlString)/default"
+      url = "\(urlString)/default"
     }
-    let url = NSURL(string: urlString)!
-    var err: NSError?
-    let request = PlayerDetailsRequest(URL: url)
-    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-    
-    if err != nil {
-      // implement
-    }
-    
-    let session = NSURLSession.sharedSession()
-    let task = session.dataTaskWithRequest(request) { (data: NSData!, response: NSURLResponse!, error: NSError!) in
-      
+    let request = PlayerDetailsRequest(URL: NSURL(string: url)!)
+    request.prepare(RequestType.GET)
+    request.startWithCompletionHandler { (data, response, error) -> Void in
       if error != nil {
         // Replace error with meaningful NSError
         request.performFailure(kGenericError)
@@ -62,23 +53,13 @@ class PlayerWebService: WebService {
         request.performFailure(kGenericError)
       }
     }
-    
-    task.resume()
     return request
   }
   
-  func requestPlayers(urlString: String, withParameters parameters: [NSURLQueryItem]? = nil, usingActiveSession activeSession: Session? = nil) -> PlayerDetailsRequest {
-    let urlComponents = NSURLComponents(string: urlString)!
-    urlComponents.queryItems = parameters
-    let request = PlayerDetailsRequest(URL: urlComponents.URL!)
-    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-    if let session = activeSession {
-      request.addValue(session.accessDetails.accessToken, forHTTPHeaderField: "Authorization")
-    }
-    
-    let session = NSURLSession.sharedSession()
-    let task = session.dataTaskWithRequest(request) { (data: NSData!, response: NSURLResponse!, error: NSError!) in
-      
+  func requestPlayers(urlString: String, withParameters parameters: [String:AnyObject]? = nil, usingActiveSession activeSession: Session? = nil) -> PlayerDetailsRequest {
+    let request = PlayerDetailsRequest(URL: NSURL(string: urlString)!)
+    request.prepare(RequestType.GET, withParameters: parameters, usingSession: activeSession)
+    request.startWithCompletionHandler { (data, response, error) -> Void in
       if error != nil {
         request.performFailure(error)
       }
@@ -86,54 +67,54 @@ class PlayerWebService: WebService {
       var jsonError: NSError?
       
       if let decodedJson = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &jsonError) as? [String:AnyObject] {
-      if let results = decodedJson["results"] as? [[String:AnyObject]] {
-        var players = [Player]()
-        for result in results {
-          if let id = result["id"] as? Int,
-            username = result["username"] as? String,
-            shortDescription = result["short_description"] as? String,
-            longDescription = result["description"] as? String,
-            followersCount = result["followers_count"] as? Int,
-            followingCount = result["following_count"] as? Int,
-            isVerified = result["is_verified"] as? Bool,
-            isFollowed = result["is_followed"] as? Bool,
-            avatarUrls = result["avatar"] as? [String:String],
-            avatarUrl = avatarUrls["original"] {
-              let player = Player(id: id, username: username, shortDescription: shortDescription, longDescription: longDescription, coverUrl: "", avatarUrl: avatarUrl, isVerified: isVerified, isCurrentUser: false, isFollowing: false, isFollowed: isFollowed, isFriend: false, followersCount: followersCount, followingCount: followingCount)
-              players.append(player)
-          } else {
-            // Replace error with meaningful NSError
-            request.performFailure(kGenericError)
+        if let results = decodedJson["results"] as? [[String:AnyObject]] {
+          var players = [Player]()
+          for result in results {
+            if let id = result["id"] as? Int,
+              username = result["username"] as? String,
+              shortDescription = result["short_description"] as? String,
+              longDescription = result["description"] as? String,
+              followersCount = result["followers_count"] as? Int,
+              followingCount = result["following_count"] as? Int,
+              isVerified = result["is_verified"] as? Bool,
+              isFollowed = result["is_followed"] as? Bool,
+              avatarUrls = result["avatar"] as? [String:String],
+              avatarUrl = avatarUrls["original"] {
+                let player = Player(id: id, username: username, shortDescription: shortDescription, longDescription: longDescription, coverUrl: "", avatarUrl: avatarUrl, isVerified: isVerified, isCurrentUser: false, isFollowing: false, isFollowed: isFollowed, isFriend: false, followersCount: followersCount, followingCount: followingCount)
+                players.append(player)
+            } else {
+              // Replace error with meaningful NSError
+              request.performFailure(kGenericError)
+            }
           }
-        }
-        request.performSuccess(players)
-      }} else {
+          request.performSuccess(players)
+        }} else {
         // Replace error with meaningful NSError
         request.performFailure(kGenericError)
       }
     }
-    
-    task.resume()
     return request
   }
   
   func requestCurrentPlayer() -> PlayerDetailsRequest {
-    return requestPlayer()
+    let url = "\(kPlayerMeApiBaseHost)/v1/users"
+    return requestPlayer(url)
   }
   
   func requestPlayerWithId(id: Int) -> PlayerDetailsRequest {
-    return requestPlayer(userId: id)
+    let url = "\(kPlayerMeApiBaseHost)/v1/users"
+    return requestPlayer(url, userId: id)
   }
   
   func requestPlayerSearch(searchQuery: String, andLimit limit: Int, andPage page: Int? = nil, orFrom from: Int? = nil) -> PlayerDetailsRequest {
     var parameters = [
-      NSURLQueryItem(name: "_query", value: searchQuery),
-      NSURLQueryItem(name: "_limit", value: "\(limit)")
-    ]
+      "_query": searchQuery,
+      "_limit": limit
+    ] as [String:AnyObject]
     if let p = page {
-      NSURLQueryItem(name: "_page", value: "\(p)")
+      parameters["_page"] = p
     } else if let f = from {
-      NSURLQueryItem(name: "_from", value: "\(f)")
+      parameters["_from"] = f
     }
     let url = "\(kPlayerMeApiBaseHost)/v1/users"
     return requestPlayers(url, withParameters: parameters)

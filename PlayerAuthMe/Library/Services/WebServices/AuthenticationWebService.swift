@@ -18,20 +18,9 @@ class AuthenticationWebService: WebService {
       "username": username,
       "password": password,
     ]
-    let url = NSURL(string: "\(kPlayerMeApiBaseHost)/oauth/access_token")!
-    var err: NSError?
-    let request = AuthenticationRequest(URL: url)
-    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-    request.HTTPMethod = "POST"
-    request.HTTPBody = NSJSONSerialization.dataWithJSONObject(parameters, options: NSJSONWritingOptions.allZeros, error: &err)
-    
-    if err != nil {
-      // implement
-    }
-    
-    let session = NSURLSession.sharedSession()
-    let task = session.dataTaskWithRequest(request) { (data: NSData!, response: NSURLResponse!, error: NSError!) in
-      
+    let request = AuthenticationRequest(URL: NSURL(string: "\(kPlayerMeApiBaseHost)/oauth/access_token")!)
+    request.prepare(RequestType.POST, withParameters: parameters)
+    request.startWithCompletionHandler { (data, response, error) -> Void in
       if error != nil {
         // Replace error with meaningful NSError
         request.performFailure(error)
@@ -40,26 +29,26 @@ class AuthenticationWebService: WebService {
       var jsonError: NSError?
       if let decodedJson = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &jsonError) as? [String:AnyObject] {
         if let refreshToken = decodedJson["refresh_token"] as? String,
-        tokenTypeString = decodedJson["token_type"] as? String,
-        tokenType = TokenType(rawValue: tokenTypeString),
-        accessToken = decodedJson["access_token"] as? String,
-        expiresInterval = decodedJson["expires"] as? Double,
-        expiresIn = decodedJson["expires_in"] as? Double {
-          let expires = NSDate(timeIntervalSince1970: expiresInterval)
-          let accessDetails = AccessDetails(accessToken: accessToken, refreshToken: refreshToken, tokenType: tokenType, expires: expires, expiresIn: expiresIn)
-          playerWebService.requestCurrentPlayer()
-          .onSuccess({ (players) -> () in
-            if players.count == 1 {
-              let currentPlayer = players[0]
-              self.sessionService.startSession(currentPlayer, accessDetails: accessDetails)
-              request.performSuccess(currentPlayer)
-            } else {
-              request.performFailure(kGenericError)
-            }
-          })
-          .onFailure({ (error) -> () in
-            request.performFailure(error)
-          })
+          tokenTypeString = decodedJson["token_type"] as? String,
+          tokenType = TokenType(rawValue: tokenTypeString),
+          accessToken = decodedJson["access_token"] as? String,
+          expiresInterval = decodedJson["expires"] as? Double,
+          expiresIn = decodedJson["expires_in"] as? Double {
+            let expires = NSDate(timeIntervalSince1970: expiresInterval)
+            let accessDetails = AccessDetails(accessToken: accessToken, refreshToken: refreshToken, tokenType: tokenType, expires: expires, expiresIn: expiresIn)
+            playerWebService.requestCurrentPlayer()
+              .onSuccess({ (players) -> () in
+                if players.count == 1 {
+                  let currentPlayer = players[0]
+                  self.sessionService.startSession(currentPlayer, accessDetails: accessDetails)
+                  request.performSuccess(currentPlayer)
+                } else {
+                  request.performFailure(kGenericError)
+                }
+              })
+              .onFailure({ (error) -> () in
+                request.performFailure(error)
+              })
         } else {
           // Replace error with meaningful NSError
           request.performFailure(kGenericError)
@@ -69,8 +58,6 @@ class AuthenticationWebService: WebService {
         request.performFailure(kGenericError)
       }
     }
-    
-    task.resume()
     return request
   }
   
@@ -82,20 +69,9 @@ class AuthenticationWebService: WebService {
       "client_secret": client.secret,
       "refresh_token": refreshToken,
     ]
-    let url = NSURL(string: "\(kPlayerMeApiBaseHost)/oauth/access_token")!
-    var err: NSError?
-    let request = RefreshTokenRequest(URL: url)
-    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-    request.HTTPMethod = "POST"
-    request.HTTPBody = NSJSONSerialization.dataWithJSONObject(parameters, options: NSJSONWritingOptions.allZeros, error: &err)
-    
-    if err != nil {
-      // implement
-    }
-    
-    let session = NSURLSession.sharedSession()
-    let task = session.dataTaskWithRequest(request) { (data: NSData!, response: NSURLResponse!, error: NSError!) in
-      
+    let request = RefreshTokenRequest(URL: NSURL(string: "\(kPlayerMeApiBaseHost)/oauth/access_token")!)
+    request.prepare(RequestType.POST, withParameters: parameters)
+    request.startWithCompletionHandler { (data, response, error) -> Void in
       if error != nil {
         request.performFailure(error)
       }
@@ -114,8 +90,6 @@ class AuthenticationWebService: WebService {
         }
       }
     }
-    
-    task.resume()
     return request
   }
 }
