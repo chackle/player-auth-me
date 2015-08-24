@@ -19,6 +19,9 @@
 		541921441B82454B00E1B554 /* SessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541921431B82454B00E1B554 /* SessionService.swift */; };
 		541921461B8245E200E1B554 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541921451B8245E200E1B554 /* Player.swift */; };
 		541921481B82469900E1B554 /* PersistentStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541921471B82469900E1B554 /* PersistentStorageService.swift */; };
+		545EBDCA1B8B81A9005B1F76 /* PlayerEditRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545EBDC91B8B81A9005B1F76 /* PlayerEditRequest.swift */; };
+		545EBDCC1B8B86D1005B1F76 /* AccountType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545EBDCB1B8B86D1005B1F76 /* AccountType.swift */; };
+		545EBDCE1B8BA276005B1F76 /* PlayerDetailsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545EBDCD1B8BA276005B1F76 /* PlayerDetailsWrapper.swift */; };
 		547FC7921B7F80CE00BA4C3F /* AccessDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547FC7911B7F80CE00BA4C3F /* AccessDetails.swift */; };
 		547FC7981B7F850000BA4C3F /* PlayerMeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547FC7971B7F850000BA4C3F /* PlayerMeRequest.swift */; };
 		547FC79A1B7F85C200BA4C3F /* AuthenticationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547FC7991B7F85C200BA4C3F /* AuthenticationRequest.swift */; };
@@ -58,6 +61,9 @@
 		541921431B82454B00E1B554 /* SessionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionService.swift; path = Library/Services/SessionService.swift; sourceTree = "<group>"; };
 		541921451B8245E200E1B554 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Player.swift; path = Library/Models/Player.swift; sourceTree = "<group>"; };
 		541921471B82469900E1B554 /* PersistentStorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersistentStorageService.swift; path = Library/Services/PersistentStorageService.swift; sourceTree = "<group>"; };
+		545EBDC91B8B81A9005B1F76 /* PlayerEditRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayerEditRequest.swift; path = Library/Models/PlayerMeRequest/PlayerEditRequest.swift; sourceTree = "<group>"; };
+		545EBDCB1B8B86D1005B1F76 /* AccountType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountType.swift; path = Library/Enums/AccountType.swift; sourceTree = "<group>"; };
+		545EBDCD1B8BA276005B1F76 /* PlayerDetailsWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayerDetailsWrapper.swift; path = Library/Models/PlayerDetailsWrapper.swift; sourceTree = "<group>"; };
 		547FC7911B7F80CE00BA4C3F /* AccessDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccessDetails.swift; path = Library/Models/AccessDetails.swift; sourceTree = "<group>"; };
 		547FC7971B7F850000BA4C3F /* PlayerMeRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayerMeRequest.swift; path = Library/Models/PlayerMeRequest/PlayerMeRequest.swift; sourceTree = "<group>"; };
 		547FC7991B7F85C200BA4C3F /* AuthenticationRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticationRequest.swift; path = Library/Models/PlayerMeRequest/AuthenticationRequest.swift; sourceTree = "<group>"; };
@@ -106,6 +112,13 @@
 			name = WebServices;
 			sourceTree = "<group>";
 		};
+		545EBDCF1B8BAB1C005B1F76 /* Wrappers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Wrappers;
+			sourceTree = "<group>";
+		};
 		547FC78D1B7F7D7E00BA4C3F /* PlayerMeRequests */ = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +126,7 @@
 				547FC7991B7F85C200BA4C3F /* AuthenticationRequest.swift */,
 				541921411B82444D00E1B554 /* RefreshTokenRequest.swift */,
 				54B4A63F1B84FAA80021A5D1 /* PlayerDetailsRequest.swift */,
+				545EBDC91B8B81A9005B1F76 /* PlayerEditRequest.swift */,
 			);
 			name = PlayerMeRequests;
 			sourceTree = "<group>";
@@ -130,6 +144,7 @@
 				4C1D19471B861A63005C0618 /* FilterType.swift */,
 				4C1D19481B861A63005C0618 /* TokenType.swift */,
 				5404564B1B87B82200A23568 /* RequestType.swift */,
+				545EBDCB1B8B86D1005B1F76 /* AccountType.swift */,
 			);
 			name = Enums;
 			sourceTree = "<group>";
@@ -233,11 +248,13 @@
 		54BC1FDE1B7E5A0F001B884B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				545EBDCF1B8BAB1C005B1F76 /* Wrappers */,
 				547FC78D1B7F7D7E00BA4C3F /* PlayerMeRequests */,
 				54BC1FE81B7E5DDB001B884B /* Client.swift */,
 				547FC7911B7F80CE00BA4C3F /* AccessDetails.swift */,
 				541921451B8245E200E1B554 /* Player.swift */,
 				54116C681B84E736009D33D3 /* Session.swift */,
+				545EBDCD1B8BA276005B1F76 /* PlayerDetailsWrapper.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -364,12 +381,15 @@
 				54BC1FDB1B7E59C2001B884B /* ExampleLoginViewController.swift in Sources */,
 				54BC1FE01B7E5A2B001B884B /* PlayerAuthMe.swift in Sources */,
 				54BC1FE91B7E5DDB001B884B /* Client.swift in Sources */,
+				545EBDCA1B8B81A9005B1F76 /* PlayerEditRequest.swift in Sources */,
 				4C1D194A1B861A63005C0618 /* TokenType.swift in Sources */,
 				541921441B82454B00E1B554 /* SessionService.swift in Sources */,
 				547FC7921B7F80CE00BA4C3F /* AccessDetails.swift in Sources */,
 				54BC1FB91B7E5989001B884B /* AppDelegate.swift in Sources */,
 				54116C691B84E736009D33D3 /* Session.swift in Sources */,
+				545EBDCE1B8BA276005B1F76 /* PlayerDetailsWrapper.swift in Sources */,
 				54BC1FE71B7E5B15001B884B /* Constants.swift in Sources */,
+				545EBDCC1B8B86D1005B1F76 /* AccountType.swift in Sources */,
 				547FC79A1B7F85C200BA4C3F /* AuthenticationRequest.swift in Sources */,
 				5404564C1B87B82200A23568 /* RequestType.swift in Sources */,
 				4C1D19511B861F35005C0618 /* WebService.swift in Sources */,

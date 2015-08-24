@@ -40,6 +40,15 @@ class ExampleHomeViewController: UIViewController {
       .onFailure({ (error) -> () in
         println("Request online players error \(error)")
       })
+      
+      let details = PlayerDetailsWrapper().changeUsername("chackle").changeLongDescription("Follow me, I'm awesome!").changeEmail("new_email@email.com").changeAccountType(AccountType.User)
+      playerAuthMe.requestToEditPlayerForSession(session, withChangedDetails:details)
+      .onSuccess({ () -> () in
+        println("Request Player Edit success!")
+      })
+      .onFailure({ (error) -> () in
+        println("Request Player Edit error \(error)")
+      })
     }
   }
   

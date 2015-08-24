@@ -26,7 +26,6 @@ class ExampleLoginViewController: UIViewController {
     // MARK: Requests which require valid authentication
     // Check to see if the current session is valid
     if let session = playerAuthMe.activeSession() {
-      println("performing segue")
       performSegueWithIdentifier("presentHomeViewController", sender: nil)
     }
   }

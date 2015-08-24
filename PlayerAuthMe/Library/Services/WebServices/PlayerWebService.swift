@@ -155,4 +155,27 @@ class PlayerWebService: WebService {
     }
     return request
   }
+  
+  func requestToEditPlayerForSession(session: Session, withChangedDetails details: PlayerDetailsWrapper) -> PlayerEditRequest {
+    let url = "\(kPlayerMeApiBaseHost)/v1/users/default"
+    var request = PlayerEditRequest(URL: NSURL(string: url)!)
+    request.prepare(RequestType.PUT, withParameters: details.toDictionary(), usingSession: session)
+    request.startWithCompletionHandler { (data, response, error) -> Void in
+      if error != nil {
+        request.performFailure(error)
+      }
+      var jsonError: NSError?
+      if let decodedJson = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &jsonError) as? [String:AnyObject] {
+        if let success = decodedJson["success"] as? Bool
+        where success == true {
+          request.performSuccess()
+        } else {
+          request.performFailure(kGenericError)
+        }
+      } else {
+        request.performFailure(kGenericError)
+      }
+    }
+    return request
+  }
 }

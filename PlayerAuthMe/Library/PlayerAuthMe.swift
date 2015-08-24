@@ -46,6 +46,10 @@ class PlayerAuthMe {
     return self.webServiceManager.requestOnlineFollowedPlayersForSession(session)
   }
   
+  func requestToEditPlayerForSession(session: Session, withChangedDetails details: PlayerDetailsWrapper) -> PlayerEditRequest {
+    return self.webServiceManager.requestToEditPlayerForSession(session, withChangedDetails: details)
+  }
+  
   func currentPlayer() -> Player? {
     return self.sessionService.session?.player
   }

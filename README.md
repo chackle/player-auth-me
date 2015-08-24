@@ -89,3 +89,16 @@ playerAuthMe.requestOnlineFollowedPlayersForSession(session)
   println("Request online players error \(error)")
 })
 ```
+
+# Change the authenticated user’s main profile details
+This request updates all details set in the wrapper. This does not include password or other private or ’extra’ profile settings.
+```swift
+let details = PlayerDetailsWrapper().changeUsername("chackle").changeLongDescription("Follow me, I'm awesome!").changeEmail("new_email@email.com").changeAccountType(AccountType.User)
+self.playerAuthMe.requestToEditPlayerForSession(session, withChangedDetails:details)
+.onSuccess({ () -> () in
+  println("Request Player Edit success!")
+})
+.onFailure({ (error) -> () in
+  println("Request Player Edit error \(error)")
+})
+```

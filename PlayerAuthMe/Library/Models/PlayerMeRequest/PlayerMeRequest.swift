@@ -29,7 +29,7 @@ class PlayerMeRequest: NSMutableURLRequest {
     fatalError("init(coder:) has not been implemented")
   }
   
-  func prepare(requestType: RequestType, withParameters parameters: [String:AnyObject]? = nil,  usingSession session: Session?) {
+  func prepare(requestType: RequestType, withParameters parameters: [String:AnyObject]? = nil, usingSession session: Session?) {
     self.prepare(requestType, withParameters: parameters)
     if let session = session {
       self.addValue(session.accessDetails.accessToken, forHTTPHeaderField: "Authorization")
@@ -55,7 +55,14 @@ class PlayerMeRequest: NSMutableURLRequest {
           self.performFailure(error)
         }
       }
-      break
+    case RequestType.PUT:
+      if let params = parameters {
+        var error: NSError?
+        self.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: NSJSONWritingOptions.allZeros, error: &error)
+        if let error = error {
+          self.performFailure(error)
+        }
+      }
     default:
       // GET
       if let params = parameters {
@@ -67,7 +74,6 @@ class PlayerMeRequest: NSMutableURLRequest {
         urlComponents.queryItems = queryItems
         self.URL = urlComponents.URL!
       }
-      break
     }
   }
   

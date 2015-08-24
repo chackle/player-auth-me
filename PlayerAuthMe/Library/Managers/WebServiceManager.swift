@@ -46,4 +46,8 @@ class WebServiceManager {
   func requestOnlineFollowedPlayersForSession(session: Session) -> PlayerDetailsRequest {
     return self.playerWebService.requestOnlineFollowedPlayersForSession(session)
   }
+  
+  func requestToEditPlayerForSession(session: Session, withChangedDetails details: PlayerDetailsWrapper) -> PlayerEditRequest {
+    return self.playerWebService.requestToEditPlayerForSession(session, withChangedDetails: details)
+  }
 }
