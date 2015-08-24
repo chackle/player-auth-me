@@ -41,7 +41,11 @@ class ExampleHomeViewController: UIViewController {
         println("Request online players error \(error)")
       })
       
-      let details = PlayerDetailsWrapper().changeUsername("chackle").changeLongDescription("Follow me, I'm awesome!").changeEmail("new_email@email.com").changeAccountType(AccountType.User)
+      let details = PlayerDetailsWrapper()
+                    .changeUsername("chackle")
+                    .changeLongDescription("Follow me, I'm awesome!")
+                    .changeEmail("new_email@email.com")
+                    .changeAccountType(AccountType.User)
       playerAuthMe.requestToEditPlayerForSession(session, withChangedDetails:details)
       .onSuccess({ () -> () in
         println("Request Player Edit success!")
