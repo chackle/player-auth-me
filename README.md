@@ -98,11 +98,23 @@ let details = PlayerDetailsWrapper()
               .changeLongDescription("Follow me, I'm awesome!")
               .changeEmail("new_email@email.com")
               .changeAccountType(AccountType.User)
-self.playerAuthMe.requestToEditPlayerForSession(session, withChangedDetails:details)
+self.playerAuthMe.requestToEditPlayerForSession(session, withDetails:details)
 .onSuccess({ () -> () in
   println("Request Player Edit success!")
 })
 .onFailure({ (error) -> () in
   println("Request Player Edit error \(error)")
+})
+```
+
+# Change the authenticated user’s privacy settings
+This consists of three different requests which all begin `requestToEditPlayerForSession`. Each have their own variations of parameters, altering the `with` parameter each time. Below is an example of changing the account privacy.
+```swift
+playerAuthMe.requestToEditPlayerForSession(session, withAccountPrivacy: AccountPrivacy.Private)
+.onSuccess({ () -> () in
+  println("Request player privacy edit success!")
+})
+.onFailure({ (error) -> () in
+  println("Request player Privacy edit error \(error)")
 })
 ```

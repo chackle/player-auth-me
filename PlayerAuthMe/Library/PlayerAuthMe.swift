@@ -33,7 +33,7 @@ class PlayerAuthMe {
     return self.webServiceManager.refreshAccessTokenForSession(session)
   }
   
-  // MARK: Player
+  // MARK: Get Player
   func requestPlayerWithId(id: Int) -> PlayerDetailsRequest {
     return self.webServiceManager.requestPlayerWithId(id)
   }
@@ -46,8 +46,25 @@ class PlayerAuthMe {
     return self.webServiceManager.requestOnlineFollowedPlayersForSession(session)
   }
   
-  func requestToEditPlayerForSession(session: Session, withChangedDetails details: PlayerDetailsWrapper) -> PlayerEditRequest {
-    return self.webServiceManager.requestToEditPlayerForSession(session, withChangedDetails: details)
+  // MARK: Edit Player
+  func requestToEditPlayerForSession(session: Session, withDetails details: PlayerDetailsWrapper) -> PlayerEditRequest {
+    return self.webServiceManager.requestToEditPlayerForSession(session, withDetails: details)
+  }
+  
+  func requestToEditPlayerForSession(session: Session, withNewPassword password: String, andConfirmedPassword confirmedPassword: String) -> PlayerEditRequest {
+    return self.webServiceManager.requestToEditPlayerForSession(session, withNewPassword: password, andConfirmedPassword: confirmedPassword)
+  }
+  
+  func requestToEditPlayerForSession(session: Session, withAccountPrivacy privacy: AccountPrivacy) -> PlayerEditRequest {
+    return self.webServiceManager.requestToEditPlayerForSession(session, withAccountPrivacy: privacy)
+  }
+  
+  func requestToEditPlayerForSession(session: Session, withMessagingPolicy policy: MessagingPolicy) -> PlayerEditRequest {
+    return self.webServiceManager.requestToEditPlayerForSession(session, withMessagingPolicy: policy)
+  }
+  
+  func requestToEditPlayerForSession(session: Session, withOnlineVisibility visibility: OnlineVisibility) -> PlayerEditRequest {
+    return self.webServiceManager.requestToEditPlayerForSession(session, withOnlineVisibility: visibility)
   }
   
   func currentPlayer() -> Player? {

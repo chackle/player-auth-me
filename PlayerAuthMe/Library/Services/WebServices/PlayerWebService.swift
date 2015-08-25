@@ -10,6 +10,7 @@ import Foundation
 
 class PlayerWebService: WebService {
   
+  // MARK: Player Details Requests
   private func requestPlayer(urlString: String, userId: Int? = nil) -> PlayerDetailsRequest {
     var url = urlString
     if let id = userId {
@@ -156,10 +157,45 @@ class PlayerWebService: WebService {
     return request
   }
   
-  func requestToEditPlayerForSession(session: Session, withChangedDetails details: PlayerDetailsWrapper) -> PlayerEditRequest {
+  
+  // MARK: Player Edit Requests
+  func requestToEditPlayerForSession(session: Session, withDetails details: PlayerDetailsWrapper) -> PlayerEditRequest {
+    return editPlayerForSession(session, withParameters: details.toDictionary())
+  }
+  
+  func requestToEditPlayerForSession(session: Session, withNewPassword password: String, andConfirmedPassword confirmedPassword: String) -> PlayerEditRequest {
+    let parameters = [
+      "newpassword": password,
+      "confirm": confirmedPassword
+    ]
+    return editPlayerForSession(session, withParameters: parameters)
+  }
+  
+  func requestToEditPlayerForSession(session: Session, withAccountPrivacy privacy: AccountPrivacy) -> PlayerEditRequest {
+    let parameters = [
+      "is_private": (privacy == AccountPrivacy.Private) ? true : false
+    ]
+    return editPlayerForSession(session, withParameters: parameters)
+  }
+  
+  func requestToEditPlayerForSession(session: Session, withMessagingPolicy policy: MessagingPolicy) -> PlayerEditRequest {
+    let parameters = [
+      "allow_message_from_everyone": (policy == MessagingPolicy.Everyone) ? true : false
+    ]
+    return editPlayerForSession(session, withParameters: parameters)
+  }
+  
+  func requestToEditPlayerForSession(session: Session, withOnlineVisibility visibility: OnlineVisibility) -> PlayerEditRequest {
+    let parameters = [
+      "allow_message_from_everyone": (visibility == OnlineVisibility.Everyone) ? true : false
+    ]
+    return editPlayerForSession(session, withParameters: parameters)
+  }
+  
+  private func editPlayerForSession(session: Session, withParameters parameters: [String:AnyObject]) -> PlayerEditRequest {
     let url = "\(kPlayerMeApiBaseHost)/v1/users/default"
     var request = PlayerEditRequest(URL: NSURL(string: url)!)
-    request.prepare(RequestType.PUT, withParameters: details.toDictionary(), usingSession: session)
+    request.prepare(RequestType.PUT, withParameters: parameters, usingSession: session)
     request.startWithCompletionHandler { (data, response, error) -> Void in
       if error != nil {
         request.performFailure(error)
@@ -167,8 +203,8 @@ class PlayerWebService: WebService {
       var jsonError: NSError?
       if let decodedJson = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &jsonError) as? [String:AnyObject] {
         if let success = decodedJson["success"] as? Bool
-        where success == true {
-          request.performSuccess()
+          where success == true {
+            request.performSuccess()
         } else {
           request.performFailure(kGenericError)
         }

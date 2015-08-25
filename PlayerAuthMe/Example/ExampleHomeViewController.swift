@@ -20,6 +20,7 @@ class ExampleHomeViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     if let session = playerAuthMe.activeSession() {
+      println("sessionservice.session = \(session.player.username)")
       // Update Player Information
       updatePlayerInformation(session.player)
       
@@ -42,16 +43,24 @@ class ExampleHomeViewController: UIViewController {
       })
       
       let details = PlayerDetailsWrapper()
-                    .changeUsername("chackle")
+                    .changeUsername("your_new_user_name")
                     .changeLongDescription("Follow me, I'm awesome!")
-                    .changeEmail("new_email@email.com")
+                    .changeEmail("your@new_email.com")
                     .changeAccountType(AccountType.User)
-      playerAuthMe.requestToEditPlayerForSession(session, withChangedDetails:details)
+      playerAuthMe.requestToEditPlayerForSession(session, withDetails:details)
       .onSuccess({ () -> () in
         println("Request Player Edit success!")
       })
       .onFailure({ (error) -> () in
         println("Request Player Edit error \(error)")
+      })
+
+      playerAuthMe.requestToEditPlayerForSession(session, withAccountPrivacy: AccountPrivacy.Private)
+      .onSuccess({ () -> () in
+        println("Request player privacy edit success!")
+      })
+      .onFailure({ (error) -> () in
+        println("Request player Privacy edit error \(error)")
       })
     }
   }
