@@ -119,6 +119,18 @@ playerAuthMe.editPlayerForSession(session, withAccountPrivacy: AccountPrivacy.Pr
 })
 ```
 
+# Getting Specific Game
+Returns a single `Game` object with a bunch of mandatory values and a lot of optional values.
+```swift
+playerAuthMe.requestGameWithId(1)
+.onSuccess({ (games) -> () in
+  println("Successfully got game \(games[0])")
+})
+.onFailure({ (error) -> () in
+  println("Did not get game \(error)")
+})
+```
+
 # Searching Full Game Library
 This is similar to searching for users. Pass in a query or filter and receive results as usable objects.
 ```swift

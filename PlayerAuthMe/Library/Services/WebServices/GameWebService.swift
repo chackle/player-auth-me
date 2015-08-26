@@ -33,6 +33,7 @@ class GameWebService: WebService {
               game.xbox360Id = results["xbox360_id"] as? Int
               game.xboxOneId = results["xboxone_id"] as? Int
               game.alias = results["alias"] as? String
+              game.longDescription = results["description"] as? String
               game.shortDescription = results["short_description"] as? String
               game.websiteUrl = results["website"] as? String
               game.facebookUrl = results["facebook"] as? String
@@ -75,9 +76,18 @@ class GameWebService: WebService {
                 }
                 game.publishers = publishers
               }
-            println("Game data: \(game)")
+            request.performSuccess([game])
+          } else {
+            // Replace error with meaningful NSError
+            request.performFailure(kGenericError)
           }
+        } else {
+          // Replace error with meaningful NSError
+          request.performFailure(kGenericError)
         }
+      } else {
+        // Replace error with meaningful NSError
+        request.performFailure(kGenericError)
       }
     }
     return request

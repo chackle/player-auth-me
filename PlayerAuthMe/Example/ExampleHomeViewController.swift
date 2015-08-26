@@ -54,10 +54,10 @@ class ExampleHomeViewController: UIViewController {
       
       playerAuthMe.requestGameWithId(1)
       .onSuccess({ (games) -> () in
-        
+        println("Successfully got game \(games[0])")
       })
       .onFailure({ (error) -> () in
-        
+        println("Did not get game \(error)")
       })
       //testEditing(session)
     }
