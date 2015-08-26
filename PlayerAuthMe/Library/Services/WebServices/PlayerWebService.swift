@@ -159,11 +159,11 @@ class PlayerWebService: WebService {
   
   
   // MARK: Player Edit Requests
-  func requestToEditPlayerForSession(session: Session, withDetails details: PlayerDetailsWrapper) -> PlayerEditRequest {
+  func editPlayerForSession(session: Session, withDetails details: PlayerDetailsWrapper) -> PlayerEditRequest {
     return editPlayerForSession(session, withParameters: details.toDictionary())
   }
   
-  func requestToEditPlayerForSession(session: Session, withNewPassword password: String, andConfirmedPassword confirmedPassword: String) -> PlayerEditRequest {
+  func editPlayerForSession(session: Session, withNewPassword password: String, andConfirmedPassword confirmedPassword: String) -> PlayerEditRequest {
     let parameters = [
       "newpassword": password,
       "confirm": confirmedPassword
@@ -171,21 +171,21 @@ class PlayerWebService: WebService {
     return editPlayerForSession(session, withParameters: parameters)
   }
   
-  func requestToEditPlayerForSession(session: Session, withAccountPrivacy privacy: AccountPrivacy) -> PlayerEditRequest {
+  func editPlayerForSession(session: Session, withAccountPrivacy privacy: AccountPrivacy) -> PlayerEditRequest {
     let parameters = [
       "is_private": (privacy == AccountPrivacy.Private) ? true : false
     ]
     return editPlayerForSession(session, withParameters: parameters)
   }
   
-  func requestToEditPlayerForSession(session: Session, withMessagingPolicy policy: MessagingPolicy) -> PlayerEditRequest {
+  func editPlayerForSession(session: Session, withMessagingPolicy policy: MessagingPolicy) -> PlayerEditRequest {
     let parameters = [
       "allow_message_from_everyone": (policy == MessagingPolicy.Everyone) ? true : false
     ]
     return editPlayerForSession(session, withParameters: parameters)
   }
   
-  func requestToEditPlayerForSession(session: Session, withOnlineVisibility visibility: OnlineVisibility) -> PlayerEditRequest {
+  func editPlayerForSession(session: Session, withOnlineVisibility visibility: OnlineVisibility) -> PlayerEditRequest {
     let parameters = [
       "allow_message_from_everyone": (visibility == OnlineVisibility.Everyone) ? true : false
     ]

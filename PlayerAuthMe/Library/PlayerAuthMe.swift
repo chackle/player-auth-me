@@ -47,24 +47,24 @@ class PlayerAuthMe {
   }
   
   // MARK: Edit Player
-  func requestToEditPlayerForSession(session: Session, withDetails details: PlayerDetailsWrapper) -> PlayerEditRequest {
-    return self.webServiceManager.requestToEditPlayerForSession(session, withDetails: details)
+  func editPlayerForSession(session: Session, withDetails details: PlayerDetailsWrapper) -> PlayerEditRequest {
+    return self.webServiceManager.editPlayerForSession(session, withDetails: details)
   }
   
-  func requestToEditPlayerForSession(session: Session, withNewPassword password: String, andConfirmedPassword confirmedPassword: String) -> PlayerEditRequest {
-    return self.webServiceManager.requestToEditPlayerForSession(session, withNewPassword: password, andConfirmedPassword: confirmedPassword)
+  func editPlayerForSession(session: Session, withNewPassword password: String, andConfirmedPassword confirmedPassword: String) -> PlayerEditRequest {
+    return self.webServiceManager.editPlayerForSession(session, withNewPassword: password, andConfirmedPassword: confirmedPassword)
   }
   
-  func requestToEditPlayerForSession(session: Session, withAccountPrivacy privacy: AccountPrivacy) -> PlayerEditRequest {
-    return self.webServiceManager.requestToEditPlayerForSession(session, withAccountPrivacy: privacy)
+  func editPlayerForSession(session: Session, withAccountPrivacy privacy: AccountPrivacy) -> PlayerEditRequest {
+    return self.webServiceManager.editPlayerForSession(session, withAccountPrivacy: privacy)
   }
   
-  func requestToEditPlayerForSession(session: Session, withMessagingPolicy policy: MessagingPolicy) -> PlayerEditRequest {
-    return self.webServiceManager.requestToEditPlayerForSession(session, withMessagingPolicy: policy)
+  func editPlayerForSession(session: Session, withMessagingPolicy policy: MessagingPolicy) -> PlayerEditRequest {
+    return self.webServiceManager.editPlayerForSession(session, withMessagingPolicy: policy)
   }
   
-  func requestToEditPlayerForSession(session: Session, withOnlineVisibility visibility: OnlineVisibility) -> PlayerEditRequest {
-    return self.webServiceManager.requestToEditPlayerForSession(session, withOnlineVisibility: visibility)
+  func editPlayerForSession(session: Session, withOnlineVisibility visibility: OnlineVisibility) -> PlayerEditRequest {
+    return self.webServiceManager.editPlayerForSession(session, withOnlineVisibility: visibility)
   }
   
   func currentPlayer() -> Player? {

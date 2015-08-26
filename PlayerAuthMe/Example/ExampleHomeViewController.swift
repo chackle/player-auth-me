@@ -47,7 +47,7 @@ class ExampleHomeViewController: UIViewController {
                     .changeLongDescription("Follow me, I'm awesome!")
                     .changeEmail("your@new_email.com")
                     .changeAccountType(AccountType.User)
-      playerAuthMe.requestToEditPlayerForSession(session, withDetails:details)
+      playerAuthMe.editPlayerForSession(session, withDetails:details)
       .onSuccess({ () -> () in
         println("Request Player Edit success!")
       })
@@ -55,7 +55,7 @@ class ExampleHomeViewController: UIViewController {
         println("Request Player Edit error \(error)")
       })
 
-      playerAuthMe.requestToEditPlayerForSession(session, withAccountPrivacy: AccountPrivacy.Private)
+      playerAuthMe.editPlayerForSession(session, withAccountPrivacy: AccountPrivacy.Private)
       .onSuccess({ () -> () in
         println("Request player privacy edit success!")
       })
