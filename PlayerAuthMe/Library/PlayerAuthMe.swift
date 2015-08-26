@@ -67,6 +67,11 @@ class PlayerAuthMe {
     return self.webServiceManager.editPlayerForSession(session, withOnlineVisibility: visibility)
   }
   
+  // MARK: Get Games
+  func requestGameSearch(searchQuery: String, andLimit limit: Int, andPage page: Int? = nil, orFrom from: Int? = nil) -> GameDetailsRequest {
+    return self.webServiceManager.requestGameSearch(searchQuery, andLimit: limit, andPage: page, orFrom: from)
+  }
+  
   func currentPlayer() -> Player? {
     return self.sessionService.session?.player
   }

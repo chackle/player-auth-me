@@ -42,27 +42,43 @@ class ExampleHomeViewController: UIViewController {
         println("Request online players error \(error)")
       })
       
-      let details = PlayerDetailsWrapper()
-                    .changeUsername("your_new_user_name")
-                    .changeLongDescription("Follow me, I'm awesome!")
-                    .changeEmail("your@new_email.com")
-                    .changeAccountType(AccountType.User)
-      playerAuthMe.editPlayerForSession(session, withDetails:details)
-      .onSuccess({ () -> () in
-        println("Request Player Edit success!")
+      playerAuthMe.requestGameSearch("Starcraft", andLimit: 20, andPage: 1)
+      .onSuccess({ (games) -> () in
+        for game in games {
+          println("Got: \(game.title)")
+        }
       })
       .onFailure({ (error) -> () in
-        println("Request Player Edit error \(error)")
+        println("Did not get the games")
       })
-
-      playerAuthMe.editPlayerForSession(session, withAccountPrivacy: AccountPrivacy.Private)
-      .onSuccess({ () -> () in
-        println("Request player privacy edit success!")
-      })
-      .onFailure({ (error) -> () in
-        println("Request player Privacy edit error \(error)")
-      })
+      /*
+      testEditing(session)
+      */
     }
+  }
+  
+  private func testEditing(session: Session) {
+    let details = PlayerDetailsWrapper()
+    .changeUsername("your_new_user_name")
+    .changeLongDescription("Follow me, I'm awesome!")
+    .changeEmail("your@new_email.com")
+    .changeAccountType(AccountType.User)
+    
+    playerAuthMe.editPlayerForSession(session, withDetails:details)
+    .onSuccess({ () -> () in
+      println("Request Player Edit success!")
+    })
+    .onFailure({ (error) -> () in
+      println("Request Player Edit error \(error)")
+    })
+    
+    playerAuthMe.editPlayerForSession(session, withAccountPrivacy: AccountPrivacy.Private)
+    .onSuccess({ () -> () in
+      println("Request player privacy edit success!")
+    })
+    .onFailure({ (error) -> () in
+      println("Request player Privacy edit error \(error)")
+    })
   }
   
   @IBAction private func logoutPressed() {

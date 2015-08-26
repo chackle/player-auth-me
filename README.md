@@ -118,3 +118,15 @@ playerAuthMe.editPlayerForSession(session, withAccountPrivacy: AccountPrivacy.Pr
   println("Request player Privacy edit error \(error)")
 })
 ```
+
+# Searching Full Game Library
+This is similar to searching for users. Pass in a query or filter and receive results as usable objects.
+```swift
+playerAuthMe.requestGameSearch("Starcraft", andLimit: 20, andPage: 1)
+.onSuccess({ (games) -> () in
+  println("Got games \(games)")
+})
+.onFailure({ (error) -> () in
+  println("Did not get the games \(error)")
+})
+```

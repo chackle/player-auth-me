@@ -16,12 +16,14 @@ class WebServiceManager {
   // Web Services
   let authenticationWebService: AuthenticationWebService
   let playerWebService: PlayerWebService
+  let gameWebService: GameWebService
   
   init(client: Client, sessionService: SessionService) {
     self.client = client
     self.sessionService = sessionService
     self.authenticationWebService = AuthenticationWebService(client: self.client, sessionService: self.sessionService)
     self.playerWebService = PlayerWebService(client: self.client, sessionService: self.sessionService)
+    self.gameWebService = GameWebService(client: self.client, sessionService: self.sessionService)
   }
   
   // MARK: Authentication Requests
@@ -66,5 +68,10 @@ class WebServiceManager {
   
   func editPlayerForSession(session: Session, withOnlineVisibility visibility: OnlineVisibility) -> PlayerEditRequest {
     return self.playerWebService.editPlayerForSession(session, withOnlineVisibility: visibility)
+  }
+  
+  // MARK: Game Requests
+  func requestGameSearch(searchQuery: String, andLimit limit: Int, andPage page: Int? = nil, orFrom from: Int? = nil) -> GameDetailsRequest {
+    return self.gameWebService.requestGameSearch(searchQuery, andLimit: limit, andPage: page, orFrom: from)
   }
 }

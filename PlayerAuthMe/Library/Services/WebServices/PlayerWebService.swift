@@ -66,7 +66,6 @@ class PlayerWebService: WebService {
       }
       
       var jsonError: NSError?
-      
       if let decodedJson = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &jsonError) as? [String:AnyObject] {
         if let results = decodedJson["results"] as? [[String:AnyObject]] {
           var players = [Player]()
@@ -89,7 +88,11 @@ class PlayerWebService: WebService {
             }
           }
           request.performSuccess(players)
-        }} else {
+        } else {
+          // Replace error with meaningful NSError
+          request.performFailure(kGenericError)
+        }
+      } else {
         // Replace error with meaningful NSError
         request.performFailure(kGenericError)
       }

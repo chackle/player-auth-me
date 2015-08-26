@@ -13,6 +13,9 @@
 		4C1D19501B861F35005C0618 /* PlayerWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1D194D1B861F35005C0618 /* PlayerWebService.swift */; };
 		4C1D19511B861F35005C0618 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1D194E1B861F35005C0618 /* WebService.swift */; };
 		4C1D19531B862086005C0618 /* ExampleHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1D19521B862086005C0618 /* ExampleHomeViewController.swift */; };
+		4CD0FAAB1B8DBD95004B09AF /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD0FAAA1B8DBD95004B09AF /* Game.swift */; };
+		4CD0FAAD1B8DBEB4004B09AF /* GameWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD0FAAC1B8DBEB4004B09AF /* GameWebService.swift */; };
+		4CD0FAAF1B8DBEFA004B09AF /* GameDetailsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD0FAAE1B8DBEFA004B09AF /* GameDetailsRequest.swift */; };
 		5404564C1B87B82200A23568 /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5404564B1B87B82200A23568 /* RequestType.swift */; };
 		540AAFC61B8CD11600086065 /* AccountPrivacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540AAFC51B8CD11600086065 /* AccountPrivacy.swift */; };
 		540AAFC81B8CD27F00086065 /* MessagingRights.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540AAFC71B8CD27F00086065 /* MessagingRights.swift */; };
@@ -58,6 +61,9 @@
 		4C1D194D1B861F35005C0618 /* PlayerWebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayerWebService.swift; path = Library/Services/WebServices/PlayerWebService.swift; sourceTree = "<group>"; };
 		4C1D194E1B861F35005C0618 /* WebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebService.swift; path = Library/Services/WebServices/WebService.swift; sourceTree = "<group>"; };
 		4C1D19521B862086005C0618 /* ExampleHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExampleHomeViewController.swift; path = Example/ExampleHomeViewController.swift; sourceTree = "<group>"; };
+		4CD0FAAA1B8DBD95004B09AF /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Game.swift; path = Library/Models/Game.swift; sourceTree = "<group>"; };
+		4CD0FAAC1B8DBEB4004B09AF /* GameWebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameWebService.swift; path = Library/Services/WebServices/GameWebService.swift; sourceTree = "<group>"; };
+		4CD0FAAE1B8DBEFA004B09AF /* GameDetailsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameDetailsRequest.swift; path = Library/Models/PlayerMeRequest/GameDetailsRequest.swift; sourceTree = "<group>"; };
 		5404564B1B87B82200A23568 /* RequestType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestType.swift; path = Library/Enums/RequestType.swift; sourceTree = "<group>"; };
 		540AAFC51B8CD11600086065 /* AccountPrivacy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountPrivacy.swift; path = Library/Enums/AccountPrivacy.swift; sourceTree = "<group>"; };
 		540AAFC71B8CD27F00086065 /* MessagingRights.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessagingRights.swift; path = Library/Enums/MessagingRights.swift; sourceTree = "<group>"; };
@@ -114,6 +120,7 @@
 				4C1D194C1B861F35005C0618 /* AuthenticationWebService.swift */,
 				4C1D194D1B861F35005C0618 /* PlayerWebService.swift */,
 				4C1D194E1B861F35005C0618 /* WebService.swift */,
+				4CD0FAAC1B8DBEB4004B09AF /* GameWebService.swift */,
 			);
 			name = WebServices;
 			sourceTree = "<group>";
@@ -133,6 +140,7 @@
 				541921411B82444D00E1B554 /* RefreshTokenRequest.swift */,
 				54B4A63F1B84FAA80021A5D1 /* PlayerDetailsRequest.swift */,
 				545EBDC91B8B81A9005B1F76 /* PlayerEditRequest.swift */,
+				4CD0FAAE1B8DBEFA004B09AF /* GameDetailsRequest.swift */,
 			);
 			name = PlayerMeRequests;
 			sourceTree = "<group>";
@@ -264,6 +272,7 @@
 				541921451B8245E200E1B554 /* Player.swift */,
 				54116C681B84E736009D33D3 /* Session.swift */,
 				545EBDCD1B8BA276005B1F76 /* PlayerDetailsWrapper.swift */,
+				4CD0FAAA1B8DBD95004B09AF /* Game.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -390,10 +399,13 @@
 				54BC1FE31B7E5A90001B884B /* WebServiceManager.swift in Sources */,
 				4C1D19501B861F35005C0618 /* PlayerWebService.swift in Sources */,
 				541921461B8245E200E1B554 /* Player.swift in Sources */,
+				4CD0FAAD1B8DBEB4004B09AF /* GameWebService.swift in Sources */,
 				54BC1FDB1B7E59C2001B884B /* ExampleLoginViewController.swift in Sources */,
 				54BC1FE01B7E5A2B001B884B /* PlayerAuthMe.swift in Sources */,
 				54BC1FE91B7E5DDB001B884B /* Client.swift in Sources */,
+				4CD0FAAF1B8DBEFA004B09AF /* GameDetailsRequest.swift in Sources */,
 				545EBDCA1B8B81A9005B1F76 /* PlayerEditRequest.swift in Sources */,
+				4CD0FAAB1B8DBD95004B09AF /* Game.swift in Sources */,
 				4C1D194A1B861A63005C0618 /* TokenType.swift in Sources */,
 				541921441B82454B00E1B554 /* SessionService.swift in Sources */,
 				547FC7921B7F80CE00BA4C3F /* AccessDetails.swift in Sources */,
