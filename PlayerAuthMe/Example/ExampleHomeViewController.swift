@@ -59,7 +59,12 @@ class ExampleHomeViewController: UIViewController {
       .onFailure({ (error) -> () in
         println("Did not get game \(error)")
       })
-      //testEditing(session)
+      
+      /*
+       * Uncomment this to test the editing
+       * WARNING - this will edit the currently logged in user's details automatically
+       * testEditing(session)
+       */
     }
   }
   
