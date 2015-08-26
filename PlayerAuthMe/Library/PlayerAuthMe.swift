@@ -48,7 +48,7 @@ class PlayerAuthMe {
   
   // MARK: Edit Player
   func editPlayerForSession(session: Session, withDetails details: PlayerDetailsWrapper) -> PlayerEditRequest {
-    return self.webServiceManager.editPlayerForSession(session, withDetails: details)
+    return self.webServiceManager.editPlayerForSession(session, withSessionService: sessionService, withDetails: details)
   }
   
   func editPlayerForSession(session: Session, withNewPassword password: String, andConfirmedPassword confirmedPassword: String) -> PlayerEditRequest {

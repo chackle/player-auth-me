@@ -10,10 +10,10 @@ import Foundation
 
 class PlayerDetailsWrapper {
   
-  private var username: String?
-  private var email: String?
-  private var longDescription: String?
-  private var accountType: AccountType?
+  var username: String?
+  var email: String?
+  var longDescription: String?
+  var accountType: AccountType?
   
   init() {
     

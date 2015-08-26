@@ -50,8 +50,8 @@ class WebServiceManager {
   }
   
   // MARK: Player Edit Requests
-  func editPlayerForSession(session: Session, withDetails details: PlayerDetailsWrapper) -> PlayerEditRequest {
-    return self.playerWebService.editPlayerForSession(session, withDetails: details)
+  func editPlayerForSession(session: Session, withSessionService sessionService: SessionService? = nil, withDetails details: PlayerDetailsWrapper) -> PlayerEditRequest {
+    return self.playerWebService.editPlayerForSession(session, withSessionService: sessionService, withDetails: details)
   }
   
   func editPlayerForSession(session: Session, withNewPassword password: String, andConfirmedPassword confirmedPassword: String) -> PlayerEditRequest {

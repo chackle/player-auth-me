@@ -128,6 +128,7 @@
 		545EBDCF1B8BAB1C005B1F76 /* Wrappers */ = {
 			isa = PBXGroup;
 			children = (
+				545EBDCD1B8BA276005B1F76 /* PlayerDetailsWrapper.swift */,
 			);
 			name = Wrappers;
 			sourceTree = "<group>";
@@ -271,7 +272,6 @@
 				547FC7911B7F80CE00BA4C3F /* AccessDetails.swift */,
 				541921451B8245E200E1B554 /* Player.swift */,
 				54116C681B84E736009D33D3 /* Session.swift */,
-				545EBDCD1B8BA276005B1F76 /* PlayerDetailsWrapper.swift */,
 				4CD0FAAA1B8DBD95004B09AF /* Game.swift */,
 			);
 			name = Models;

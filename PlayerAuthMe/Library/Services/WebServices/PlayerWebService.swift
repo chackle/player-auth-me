@@ -162,8 +162,8 @@ class PlayerWebService: WebService {
   
   
   // MARK: Player Edit Requests
-  func editPlayerForSession(session: Session, withDetails details: PlayerDetailsWrapper) -> PlayerEditRequest {
-    return editPlayerForSession(session, withParameters: details.toDictionary())
+  func editPlayerForSession(session: Session, withSessionService sessionService: SessionService? = nil, withDetails details: PlayerDetailsWrapper) -> PlayerEditRequest {
+    return editPlayerForSession(session, withSessionService: sessionService, withParameters: details.toDictionary())
   }
   
   func editPlayerForSession(session: Session, withNewPassword password: String, andConfirmedPassword confirmedPassword: String) -> PlayerEditRequest {
@@ -195,7 +195,7 @@ class PlayerWebService: WebService {
     return editPlayerForSession(session, withParameters: parameters)
   }
   
-  private func editPlayerForSession(session: Session, withParameters parameters: [String:AnyObject]) -> PlayerEditRequest {
+  private func editPlayerForSession(session: Session, withSessionService sessionService: SessionService? = nil, withParameters parameters: [String:AnyObject]) -> PlayerEditRequest {
     let url = "\(kPlayerMeApiBaseHost)/v1/users/default"
     var request = PlayerEditRequest(URL: NSURL(string: url)!)
     request.prepare(RequestType.PUT, withParameters: parameters, usingSession: session)
@@ -207,6 +207,17 @@ class PlayerWebService: WebService {
       if let decodedJson = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &jsonError) as? [String:AnyObject] {
         if let success = decodedJson["success"] as? Bool
           where success == true {
+            if let modified = decodedJson["modified"] as? [String:AnyObject], sessionService = sessionService {
+              // Update any relevant player information
+              let playerDetails = PlayerDetailsWrapper()
+              if let username = modified["username"] as? String {
+                playerDetails.changeUsername(username)
+              }
+              if let description = modified["description"] as? String {
+                playerDetails.changeLongDescription(description)
+              }
+              sessionService.updateSession(playerDetails)
+            }
             request.performSuccess()
         } else {
           request.performFailure(kGenericError)

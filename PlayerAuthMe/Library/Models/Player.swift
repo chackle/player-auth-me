@@ -11,9 +11,9 @@ import Foundation
 class Player {
   
   let id: Int
-  let username: String
+  var username: String
   let shortDescription: String
-  let longDescription: String
+  var longDescription: String
   let coverUrl: String
   let avatarUrl: String
   let isVerified: Bool

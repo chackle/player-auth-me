@@ -31,6 +31,18 @@ class SessionService {
     }
   }
   
+  func updateSession(playerDetails: PlayerDetailsWrapper) {
+    if let session = session {
+      if let username = playerDetails.username {
+        session.player.username = username
+      }
+      if let longDescription = playerDetails.longDescription {
+        session.player.longDescription = longDescription
+      }
+      self.storageService.storeCurrentSession(session)
+    }
+  }
+  
   func endSession() {
     storageService.clearCurrentSession()
     session = nil

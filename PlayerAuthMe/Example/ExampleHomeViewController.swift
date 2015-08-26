@@ -59,7 +59,7 @@ class ExampleHomeViewController: UIViewController {
   
   private func testEditing(session: Session) {
     let details = PlayerDetailsWrapper()
-    .changeUsername("your_new_user_name")
+    .changeUsername("123456")
     .changeLongDescription("Follow me, I'm awesome!")
     .changeEmail("your@new_email.com")
     .changeAccountType(AccountType.User)
@@ -67,6 +67,10 @@ class ExampleHomeViewController: UIViewController {
     playerAuthMe.editPlayerForSession(session, withDetails:details)
     .onSuccess({ () -> () in
       println("Request Player Edit success!")
+      // Update your UI
+      dispatch_async(dispatch_get_main_queue(), { () -> Void in
+        self.updatePlayerInformation(session.player)
+      })
     })
     .onFailure({ (error) -> () in
       println("Request Player Edit error \(error)")
