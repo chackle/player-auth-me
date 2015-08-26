@@ -74,4 +74,8 @@ class WebServiceManager {
   func requestGameSearch(searchQuery: String, andLimit limit: Int, andPage page: Int? = nil, orFrom from: Int? = nil) -> GameDetailsRequest {
     return self.gameWebService.requestGameSearch(searchQuery, andLimit: limit, andPage: page, orFrom: from)
   }
+  
+  func requestGameWithId(id: Int) -> GameDetailsRequest {
+    return self.gameWebService.requestGameWithId(id)
+  }
 }

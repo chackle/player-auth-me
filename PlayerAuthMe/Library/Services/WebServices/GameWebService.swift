@@ -10,6 +10,24 @@ import Foundation
 
 class GameWebService: WebService {
   
+  private func requestGame(urlString: String, id: Int) -> GameDetailsRequest {
+    let url = "\(urlString)/\(id)"
+    let request = GameDetailsRequest(URL: NSURL(string: url)!)
+    request.prepare(RequestType.GET)
+    request.startWithCompletionHandler { (data, response, error) -> Void in
+      if error != nil {
+        request.performFailure(error)
+      }
+      var jsonError: NSError?
+      if let decodedJson = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &jsonError) as? [String:AnyObject] {
+        if let results = decodedJson["results"] as? [String:AnyObject] {
+          println("Game data: \(results)")
+        }
+      }
+    }
+    return request
+  }
+  
   private func requestGames(urlString: String, withParameters parameters: [String:AnyObject]? = nil) -> GameDetailsRequest {
     let request = GameDetailsRequest(URL: NSURL(string: urlString)!)
     request.prepare(RequestType.GET, withParameters: parameters)
@@ -49,6 +67,11 @@ class GameWebService: WebService {
       }
     }
     return request
+  }
+  
+  func requestGameWithId(id: Int) -> GameDetailsRequest {
+    let url = "\(kPlayerMeApiBaseHost)/v1/games"
+    return requestGame(url, id: id)
   }
   
   func requestGameSearch(searchQuery: String, andLimit limit: Int, andPage page: Int? = nil, orFrom from: Int? = nil) -> GameDetailsRequest {

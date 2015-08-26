@@ -72,6 +72,10 @@ class PlayerAuthMe {
     return self.webServiceManager.requestGameSearch(searchQuery, andLimit: limit, andPage: page, orFrom: from)
   }
   
+  func requestGameWithId(id: Int) -> GameDetailsRequest {
+    return self.webServiceManager.requestGameWithId(id)
+  }
+  
   func currentPlayer() -> Player? {
     return self.sessionService.session?.player
   }

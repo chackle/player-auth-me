@@ -51,15 +51,21 @@ class ExampleHomeViewController: UIViewController {
       .onFailure({ (error) -> () in
         println("Did not get the games")
       })
-      /*
-      testEditing(session)
-      */
+      
+      playerAuthMe.requestGameWithId(1)
+      .onSuccess({ (games) -> () in
+        
+      })
+      .onFailure({ (error) -> () in
+        
+      })
+      //testEditing(session)
     }
   }
   
   private func testEditing(session: Session) {
     let details = PlayerDetailsWrapper()
-    .changeUsername("123456")
+    .changeUsername("username123")
     .changeLongDescription("Follow me, I'm awesome!")
     .changeEmail("your@new_email.com")
     .changeAccountType(AccountType.User)
