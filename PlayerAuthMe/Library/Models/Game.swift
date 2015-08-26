@@ -8,23 +8,49 @@
 
 import Foundation
 
-struct Game {
+class Game {
   
-  let id: Int
-  let title: String
-  let boxArtUrl: String
-  let isLiked: Bool
-  let isFavourited: Bool
-  let likesCount: Int
-  let favouritesCount: Int
+  // Mandatory variables
+  var id: Int
+  var title: String
+  var boxArtUrl: String
+  var likesCount: Int
+  var favouritesCount: Int
   
-  init(id: Int, title: String, boxArtUrl: String, isLiked: Bool, isFavourited: Bool, likesCount: Int, favouritesCount: Int) {
+  // Optional variables
+  var isLiked: Bool?
+  var isFavourited: Bool?
+  var releaseDateString: String?
+  var steamId: Int?
+  var xbox360Id: Int?
+  var xboxOneId: Int?
+  var alias: String?
+  var longDescription: String?
+  var shortDescription: String?
+  var websiteUrl: String?
+  var facebookUrl: String?
+  var twitterUrl: String?
+  var googlePlusUrl: String?
+  var steamUrl: String?
+  var twitchUrl: String?
+  var youtubeUrl: String?
+  var buyUrl: String?
+  
+  var platforms: [Platform]?
+  var developers: [Developer]?
+  var publishers: [Publisher]?
+  
+  init(id: Int, title: String, boxArtUrl: String, likesCount: Int, favouritesCount: Int) {
     self.id = id
     self.title = title
     self.boxArtUrl = boxArtUrl
-    self.isLiked = isLiked
-    self.isFavourited = isFavourited
     self.likesCount = likesCount
     self.favouritesCount = favouritesCount
+  }
+  
+  convenience init(id: Int, title: String, boxArtUrl: String, likesCount: Int, favouritesCount: Int, isLiked: Bool, isFavourited: Bool) {
+    self.init(id: id, title: title, boxArtUrl: boxArtUrl, likesCount: likesCount, favouritesCount: favouritesCount)
+    self.isLiked = isLiked
+    self.isFavourited = isFavourited
   }
 }
