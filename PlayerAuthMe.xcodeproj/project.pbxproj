@@ -45,6 +45,7 @@
 		54BC1FE31B7E5A90001B884B /* WebServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BC1FE21B7E5A90001B884B /* WebServiceManager.swift */; };
 		54BC1FE71B7E5B15001B884B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BC1FE61B7E5B15001B884B /* Constants.swift */; };
 		54BC1FE91B7E5DDB001B884B /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BC1FE81B7E5DDB001B884B /* Client.swift */; };
+		54C9E0131B8F836E0052B510 /* FeedPostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C9E0121B8F836E0052B510 /* FeedPostRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +101,7 @@
 		54BC1FE21B7E5A90001B884B /* WebServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebServiceManager.swift; path = Library/Managers/WebServiceManager.swift; sourceTree = "<group>"; };
 		54BC1FE61B7E5B15001B884B /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Library/Constants/Constants.swift; sourceTree = "<group>"; };
 		54BC1FE81B7E5DDB001B884B /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Client.swift; path = Library/Models/Client.swift; sourceTree = "<group>"; };
+		54C9E0121B8F836E0052B510 /* FeedPostRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedPostRequest.swift; path = Library/Models/PlayerMeRequest/FeedPostRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 				54B4A63F1B84FAA80021A5D1 /* PlayerDetailsRequest.swift */,
 				545EBDC91B8B81A9005B1F76 /* PlayerEditRequest.swift */,
 				4CD0FAAE1B8DBEFA004B09AF /* GameDetailsRequest.swift */,
+				54C9E0121B8F836E0052B510 /* FeedPostRequest.swift */,
 			);
 			name = PlayerMeRequests;
 			sourceTree = "<group>";
@@ -429,6 +432,7 @@
 				547FC79A1B7F85C200BA4C3F /* AuthenticationRequest.swift in Sources */,
 				5404564C1B87B82200A23568 /* RequestType.swift in Sources */,
 				4C1D19511B861F35005C0618 /* WebService.swift in Sources */,
+				54C9E0131B8F836E0052B510 /* FeedPostRequest.swift in Sources */,
 				4C1D19491B861A63005C0618 /* FilterType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

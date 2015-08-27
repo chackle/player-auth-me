@@ -76,6 +76,11 @@ class PlayerAuthMe {
     return self.webServiceManager.requestGameWithId(id)
   }
   
+  // MARK: Post to Feed
+  func postToFeedUsingSession(session: Session, withText text: String, andImages images: [UIImage]? = nil, andCheckInGameId gameId: Int) {
+    
+  }
+  
   func currentPlayer() -> Player? {
     return self.sessionService.session?.player
   }
