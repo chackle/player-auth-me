@@ -90,6 +90,19 @@ playerAuthMe.requestOnlineFollowedPlayersForSession(session)
 })
 ```
 
+# Post using the Authenticated User’s Session
+This request is very powerful. It can be implemented as a standard ‘make a post’ function OR it can be used to post a high score screenshot ‘share with your friends via player.me’ function. At the moment it takes in an array of `UIImage`, but this will later be compatible with all forms of displaying content including `UIView` and `CALayer`.
+```swift
+playerAuthMe.postToFeedUsingSession(session, withText: textField.text, andImages: [imageView.image!])
+.onSuccess({ () -> () in
+  println("Successful post!")
+})
+.onFailure({ (error) -> () in
+  println("Failed to post! \(error)")
+})
+```
+![alt text](http://i.imgur.com/xqqkrwU.png “End Result of Example“)
+
 # Change the authenticated user’s main profile details
 This request updates all details set in the wrapper. This does not include password or other private or ’extra’ profile settings.
 ```swift

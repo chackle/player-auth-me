@@ -87,7 +87,7 @@ class ExampleHomeViewController: UIViewController {
       println("Request Player Edit error \(error)")
     })
     
-    playerAuthMe.editPlayerForSession(session, withAccountPrivacy: AccountPrivacy.Private)
+    playerAuthMe.editPlayerForSession(session, withAccountPrivacy: AccountPrivacy.Public)
     .onSuccess({ () -> () in
       println("Request player privacy edit success!")
     })

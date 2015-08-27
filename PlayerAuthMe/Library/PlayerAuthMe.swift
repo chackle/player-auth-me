@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class PlayerAuthMe {
   
@@ -77,8 +78,8 @@ class PlayerAuthMe {
   }
   
   // MARK: Post to Feed
-  func postToFeedUsingSession(session: Session, withText text: String, andImages images: [UIImage]? = nil, andCheckInGameId gameId: Int) {
-    
+  func postToFeedUsingSession(session: Session, withText text: String, andImages images: [UIImage]? = nil, andCheckInGameId gameId: Int? = nil) -> FeedPostRequest {
+    return self.webServiceManager.postToFeedUsingSession(session, withText: text, andImages: images, andCheckInGameId: gameId)
   }
   
   func currentPlayer() -> Player? {

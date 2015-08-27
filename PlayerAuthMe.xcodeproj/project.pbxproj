@@ -28,6 +28,9 @@
 		541921441B82454B00E1B554 /* SessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541921431B82454B00E1B554 /* SessionService.swift */; };
 		541921461B8245E200E1B554 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541921451B8245E200E1B554 /* Player.swift */; };
 		541921481B82469900E1B554 /* PersistentStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541921471B82469900E1B554 /* PersistentStorageService.swift */; };
+		545219041B8F8C6E00777141 /* ExamplePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545219031B8F8C6E00777141 /* ExamplePostViewController.swift */; };
+		545219061B8F8DC300777141 /* score@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 545219051B8F8DC300777141 /* score@2x.jpg */; };
+		545219081B8F8E8900777141 /* FeedWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545219071B8F8E8900777141 /* FeedWebService.swift */; };
 		545EBDCA1B8B81A9005B1F76 /* PlayerEditRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545EBDC91B8B81A9005B1F76 /* PlayerEditRequest.swift */; };
 		545EBDCC1B8B86D1005B1F76 /* AccountType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545EBDCB1B8B86D1005B1F76 /* AccountType.swift */; };
 		545EBDCE1B8BA276005B1F76 /* PlayerDetailsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545EBDCD1B8BA276005B1F76 /* PlayerDetailsWrapper.swift */; };
@@ -80,6 +83,9 @@
 		541921431B82454B00E1B554 /* SessionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionService.swift; path = Library/Services/SessionService.swift; sourceTree = "<group>"; };
 		541921451B8245E200E1B554 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Player.swift; path = Library/Models/Player.swift; sourceTree = "<group>"; };
 		541921471B82469900E1B554 /* PersistentStorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersistentStorageService.swift; path = Library/Services/PersistentStorageService.swift; sourceTree = "<group>"; };
+		545219031B8F8C6E00777141 /* ExamplePostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExamplePostViewController.swift; path = Example/ExamplePostViewController.swift; sourceTree = "<group>"; };
+		545219051B8F8DC300777141 /* score@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "score@2x.jpg"; sourceTree = "<group>"; };
+		545219071B8F8E8900777141 /* FeedWebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedWebService.swift; path = Library/Services/WebServices/FeedWebService.swift; sourceTree = "<group>"; };
 		545EBDC91B8B81A9005B1F76 /* PlayerEditRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayerEditRequest.swift; path = Library/Models/PlayerMeRequest/PlayerEditRequest.swift; sourceTree = "<group>"; };
 		545EBDCB1B8B86D1005B1F76 /* AccountType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountType.swift; path = Library/Enums/AccountType.swift; sourceTree = "<group>"; };
 		545EBDCD1B8BA276005B1F76 /* PlayerDetailsWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayerDetailsWrapper.swift; path = Library/Models/PlayerDetailsWrapper.swift; sourceTree = "<group>"; };
@@ -129,6 +135,7 @@
 				4C1D194D1B861F35005C0618 /* PlayerWebService.swift */,
 				4C1D194E1B861F35005C0618 /* WebService.swift */,
 				4CD0FAAC1B8DBEB4004B09AF /* GameWebService.swift */,
+				545219071B8F8E8900777141 /* FeedWebService.swift */,
 			);
 			name = WebServices;
 			sourceTree = "<group>";
@@ -250,8 +257,10 @@
 		54BC1FD91B7E599A001B884B /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				545219051B8F8DC300777141 /* score@2x.jpg */,
 				54BC1FDA1B7E59C2001B884B /* ExampleLoginViewController.swift */,
 				4C1D19521B862086005C0618 /* ExampleHomeViewController.swift */,
+				545219031B8F8C6E00777141 /* ExamplePostViewController.swift */,
 			);
 			name = Example;
 			sourceTree = "<group>";
@@ -380,6 +389,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				54BC1FBE1B7E5989001B884B /* Main.storyboard in Resources */,
+				545219061B8F8DC300777141 /* score@2x.jpg in Resources */,
 				54BC1FC31B7E5989001B884B /* LaunchScreen.xib in Resources */,
 				54BC1FC01B7E5989001B884B /* Images.xcassets in Resources */,
 			);
@@ -430,7 +440,9 @@
 				54BC1FE71B7E5B15001B884B /* Constants.swift in Sources */,
 				545EBDCC1B8B86D1005B1F76 /* AccountType.swift in Sources */,
 				547FC79A1B7F85C200BA4C3F /* AuthenticationRequest.swift in Sources */,
+				545219041B8F8C6E00777141 /* ExamplePostViewController.swift in Sources */,
 				5404564C1B87B82200A23568 /* RequestType.swift in Sources */,
+				545219081B8F8E8900777141 /* FeedWebService.swift in Sources */,
 				4C1D19511B861F35005C0618 /* WebService.swift in Sources */,
 				54C9E0131B8F836E0052B510 /* FeedPostRequest.swift in Sources */,
 				4C1D19491B861A63005C0618 /* FilterType.swift in Sources */,

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class WebServiceManager {
   
@@ -17,6 +18,7 @@ class WebServiceManager {
   let authenticationWebService: AuthenticationWebService
   let playerWebService: PlayerWebService
   let gameWebService: GameWebService
+  let feedWebService: FeedWebService
   
   init(client: Client, sessionService: SessionService) {
     self.client = client
@@ -24,6 +26,7 @@ class WebServiceManager {
     self.authenticationWebService = AuthenticationWebService(client: self.client, sessionService: self.sessionService)
     self.playerWebService = PlayerWebService(client: self.client, sessionService: self.sessionService)
     self.gameWebService = GameWebService(client: self.client, sessionService: self.sessionService)
+    self.feedWebService = FeedWebService(client: self.client, sessionService: self.sessionService)
   }
   
   // MARK: Authentication Requests
@@ -73,6 +76,11 @@ class WebServiceManager {
   // MARK: Game Requests
   func requestGameSearch(searchQuery: String, andLimit limit: Int, andPage page: Int? = nil, orFrom from: Int? = nil) -> GameDetailsRequest {
     return self.gameWebService.requestGameSearch(searchQuery, andLimit: limit, andPage: page, orFrom: from)
+  }
+  
+  // MARK: Feed Requests
+  func postToFeedUsingSession(session: Session, withText text: String, andImages images: [UIImage]? = nil, andCheckInGameId gameId: Int? = nil) -> FeedPostRequest {
+    return self.feedWebService.postToFeedUsingSession(session, withText: text, andImages: images, andCheckInGameId: gameId)
   }
   
   func requestGameWithId(id: Int) -> GameDetailsRequest {
