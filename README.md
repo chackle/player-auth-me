@@ -101,6 +101,7 @@ playerAuthMe.postToFeedUsingSession(session, withText: textField.text, andImages
   println("Failed to post! \(error)")
 })
 ```
+Here is the end result using the example packaged in the project:
 ![alt text](http://i.imgur.com/xqqkrwU.png “End Result of Example“)
 
 # Change the authenticated user’s main profile details
