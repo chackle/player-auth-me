@@ -60,6 +60,13 @@ class ExampleHomeViewController: UIViewController {
         println("Did not get game \(error)")
       })
       
+      playerAuthMe.requestFeedUsingSession(session, withLimit: 50, andPage: 0, fromSources: FeedSource.allValues)
+      .onSuccess({ (posts) -> () in
+        println("posts \(posts)")
+      })
+      .onFailure({ (error) -> () in
+        println("Request Feed Error \(error)")
+      })
       /*
        * Uncomment this to test the editing
        * WARNING - this will edit the currently logged in user's details automatically
@@ -87,7 +94,7 @@ class ExampleHomeViewController: UIViewController {
       println("Request Player Edit error \(error)")
     })
     
-    playerAuthMe.editPlayerForSession(session, withAccountPrivacy: AccountPrivacy.Public)
+    playerAuthMe.editPlayerForSession(session, withAccountPrivacy: AccountPrivacy.Private)
     .onSuccess({ () -> () in
       println("Request player privacy edit success!")
     })

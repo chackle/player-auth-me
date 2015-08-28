@@ -13,6 +13,14 @@
 		4C1D19501B861F35005C0618 /* PlayerWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1D194D1B861F35005C0618 /* PlayerWebService.swift */; };
 		4C1D19511B861F35005C0618 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1D194E1B861F35005C0618 /* WebService.swift */; };
 		4C1D19531B862086005C0618 /* ExampleHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1D19521B862086005C0618 /* ExampleHomeViewController.swift */; };
+		4C40E3121B90972200633E00 /* FeedSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C40E3111B90972200633E00 /* FeedSource.swift */; };
+		4C40E3141B90983100633E00 /* FeedPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C40E3131B90983100633E00 /* FeedPost.swift */; };
+		4C40E3161B90997300633E00 /* FeedRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C40E3151B90997300633E00 /* FeedRequest.swift */; };
+		4C40E3181B909D6100633E00 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C40E3171B909D6100633E00 /* Comment.swift */; };
+		4C40E31A1B90A5B000633E00 /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C40E3191B90A5B000633E00 /* PostData.swift */; };
+		4C40E31C1B90A86100633E00 /* CheckInType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C40E31B1B90A86100633E00 /* CheckInType.swift */; };
+		4C40E31E1B90A9BE00633E00 /* PostMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C40E31D1B90A9BE00633E00 /* PostMeta.swift */; };
+		4C40E3201B90AA0A00633E00 /* PostMetaContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C40E31F1B90AA0A00633E00 /* PostMetaContent.swift */; };
 		4CD0FAAB1B8DBD95004B09AF /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD0FAAA1B8DBD95004B09AF /* Game.swift */; };
 		4CD0FAAD1B8DBEB4004B09AF /* GameWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD0FAAC1B8DBEB4004B09AF /* GameWebService.swift */; };
 		4CD0FAAF1B8DBEFA004B09AF /* GameDetailsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD0FAAE1B8DBEFA004B09AF /* GameDetailsRequest.swift */; };
@@ -68,6 +76,14 @@
 		4C1D194D1B861F35005C0618 /* PlayerWebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayerWebService.swift; path = Library/Services/WebServices/PlayerWebService.swift; sourceTree = "<group>"; };
 		4C1D194E1B861F35005C0618 /* WebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebService.swift; path = Library/Services/WebServices/WebService.swift; sourceTree = "<group>"; };
 		4C1D19521B862086005C0618 /* ExampleHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExampleHomeViewController.swift; path = Example/ExampleHomeViewController.swift; sourceTree = "<group>"; };
+		4C40E3111B90972200633E00 /* FeedSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedSource.swift; path = Library/Enums/FeedSource.swift; sourceTree = "<group>"; };
+		4C40E3131B90983100633E00 /* FeedPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedPost.swift; path = Library/Models/FeedPost.swift; sourceTree = "<group>"; };
+		4C40E3151B90997300633E00 /* FeedRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedRequest.swift; path = Library/Models/PlayerMeRequest/FeedRequest.swift; sourceTree = "<group>"; };
+		4C40E3171B909D6100633E00 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Comment.swift; path = Library/Models/Comment.swift; sourceTree = "<group>"; };
+		4C40E3191B90A5B000633E00 /* PostData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostData.swift; path = Library/Models/PostData.swift; sourceTree = "<group>"; };
+		4C40E31B1B90A86100633E00 /* CheckInType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckInType.swift; path = Library/Enums/CheckInType.swift; sourceTree = "<group>"; };
+		4C40E31D1B90A9BE00633E00 /* PostMeta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostMeta.swift; path = Library/Models/PostMeta.swift; sourceTree = "<group>"; };
+		4C40E31F1B90AA0A00633E00 /* PostMetaContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostMetaContent.swift; path = Library/Enums/PostMetaContent.swift; sourceTree = "<group>"; };
 		4CD0FAAA1B8DBD95004B09AF /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Game.swift; path = Library/Models/Game.swift; sourceTree = "<group>"; };
 		4CD0FAAC1B8DBEB4004B09AF /* GameWebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameWebService.swift; path = Library/Services/WebServices/GameWebService.swift; sourceTree = "<group>"; };
 		4CD0FAAE1B8DBEFA004B09AF /* GameDetailsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameDetailsRequest.swift; path = Library/Models/PlayerMeRequest/GameDetailsRequest.swift; sourceTree = "<group>"; };
@@ -158,6 +174,10 @@
 				545EBDC91B8B81A9005B1F76 /* PlayerEditRequest.swift */,
 				4CD0FAAE1B8DBEFA004B09AF /* GameDetailsRequest.swift */,
 				54C9E0121B8F836E0052B510 /* FeedPostRequest.swift */,
+				4C40E3151B90997300633E00 /* FeedRequest.swift */,
+				4C40E3171B909D6100633E00 /* Comment.swift */,
+				4C40E3191B90A5B000633E00 /* PostData.swift */,
+				4C40E31D1B90A9BE00633E00 /* PostMeta.swift */,
 			);
 			name = PlayerMeRequests;
 			sourceTree = "<group>";
@@ -179,6 +199,9 @@
 				540AAFC51B8CD11600086065 /* AccountPrivacy.swift */,
 				540AAFC71B8CD27F00086065 /* MessagingRights.swift */,
 				540AAFC91B8CD2AE00086065 /* OnlineVisibility.swift */,
+				4C40E3111B90972200633E00 /* FeedSource.swift */,
+				4C40E31B1B90A86100633E00 /* CheckInType.swift */,
+				4C40E31F1B90AA0A00633E00 /* PostMetaContent.swift */,
 			);
 			name = Enums;
 			sourceTree = "<group>";
@@ -294,6 +317,7 @@
 				4CD0FAB01B8DE4D2004B09AF /* Platform.swift */,
 				4CD0FAB21B8DE515004B09AF /* Developer.swift */,
 				4CD0FAB41B8DE565004B09AF /* Publisher.swift */,
+				4C40E3131B90983100633E00 /* FeedPost.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -410,11 +434,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C1D194F1B861F35005C0618 /* AuthenticationWebService.swift in Sources */,
+				4C40E3161B90997300633E00 /* FeedRequest.swift in Sources */,
 				4C1D19531B862086005C0618 /* ExampleHomeViewController.swift in Sources */,
 				540AAFCA1B8CD2AE00086065 /* OnlineVisibility.swift in Sources */,
 				540AAFC61B8CD11600086065 /* AccountPrivacy.swift in Sources */,
 				540AAFC81B8CD27F00086065 /* MessagingRights.swift in Sources */,
 				541921481B82469900E1B554 /* PersistentStorageService.swift in Sources */,
+				4C40E3141B90983100633E00 /* FeedPost.swift in Sources */,
+				4C40E3181B909D6100633E00 /* Comment.swift in Sources */,
+				4C40E31C1B90A86100633E00 /* CheckInType.swift in Sources */,
+				4C40E3201B90AA0A00633E00 /* PostMetaContent.swift in Sources */,
 				547FC7981B7F850000BA4C3F /* PlayerMeRequest.swift in Sources */,
 				541921421B82444D00E1B554 /* RefreshTokenRequest.swift in Sources */,
 				54B4A6401B84FAA80021A5D1 /* PlayerDetailsRequest.swift in Sources */,
@@ -423,7 +452,10 @@
 				54BC1FE31B7E5A90001B884B /* WebServiceManager.swift in Sources */,
 				4C1D19501B861F35005C0618 /* PlayerWebService.swift in Sources */,
 				541921461B8245E200E1B554 /* Player.swift in Sources */,
+				4C40E31E1B90A9BE00633E00 /* PostMeta.swift in Sources */,
+				4C40E3121B90972200633E00 /* FeedSource.swift in Sources */,
 				4CD0FAAD1B8DBEB4004B09AF /* GameWebService.swift in Sources */,
+				4C40E31A1B90A5B000633E00 /* PostData.swift in Sources */,
 				54BC1FDB1B7E59C2001B884B /* ExampleLoginViewController.swift in Sources */,
 				4CD0FAB11B8DE4D2004B09AF /* Platform.swift in Sources */,
 				54BC1FE01B7E5A2B001B884B /* PlayerAuthMe.swift in Sources */,

@@ -104,6 +104,18 @@ playerAuthMe.postToFeedUsingSession(session, withText: textField.text, andImages
 Here is the end result using the example packaged in the project:
 ![alt text](http://i.imgur.com/xqqkrwU.png “End Result of Example“)
 
+# Request the Current Feed
+This request is restricted for now due to the sheer flexibility of it. For now it returns the standard public feed. Most of the response is packaged up nicely into useable objects, structs and enums. Some things are missing, but this will change with a bit of time. Below is an example of how to use this GET request.
+```swift
+playerAuthMe.requestFeedUsingSession(session, withLimit: 50, andPage: 0, fromSources: FeedSource.allValues)
+.onSuccess({ (posts) -> () in
+  println("posts \(posts)")
+})
+.onFailure({ (error) -> () in
+  println("Request Feed Error \(error)")
+})
+```
+
 # Change the authenticated user’s main profile details
 This request updates all details set in the wrapper. This does not include password or other private or ’extra’ profile settings.
 ```swift

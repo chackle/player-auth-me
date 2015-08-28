@@ -83,6 +83,10 @@ class WebServiceManager {
     return self.feedWebService.postToFeedUsingSession(session, withText: text, andImages: images, andCheckInGameId: gameId)
   }
   
+  func requestFeedUsingSession(session: Session, withLimit limit: Int, andPage page: Int? = nil, orFrom from: Int? = nil, fromSources sources: [FeedSource]) -> FeedRequest {
+    return self.feedWebService.requestFeedUsingSession(session, withLimit: limit, andPage: page, orFrom: from, fromSources: sources)
+  }
+  
   func requestGameWithId(id: Int) -> GameDetailsRequest {
     return self.gameWebService.requestGameWithId(id)
   }

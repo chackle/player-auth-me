@@ -77,7 +77,12 @@ class PlayerAuthMe {
     return self.webServiceManager.requestGameWithId(id)
   }
   
-  // MARK: Post to Feed
+  // MARK: Feed
+  func requestFeedUsingSession(session: Session, withLimit limit: Int, andPage page: Int? = nil, orFrom from: Int? = nil, fromSources sources: [FeedSource]) -> FeedRequest {
+    // Didn't include general / mentions / pinned here as data doesn't seem to be relevant enough at this point
+    return self.webServiceManager.requestFeedUsingSession(session, withLimit: limit, andPage: page, orFrom: from, fromSources: sources)
+  }
+  
   func postToFeedUsingSession(session: Session, withText text: String, andImages images: [UIImage]? = nil, andCheckInGameId gameId: Int? = nil) -> FeedPostRequest {
     return self.webServiceManager.postToFeedUsingSession(session, withText: text, andImages: images, andCheckInGameId: gameId)
   }
