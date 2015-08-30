@@ -28,7 +28,6 @@ class Comment {
   var raw: String
   var user: Player
   
-  // TODO: Flesh out and implement into feed GET
   init(id: Int, userId: Int, activityUserId: Int, activityId: Int, createdAtString: String, updatedAtString: String, userIsBlocked: Bool, isLiked: Bool, url: String, showDelete: Bool, showEdit: Bool, isOwnComment: Bool, likesCount: Int, text: String, raw: String, user: Player) {
     self.id = id
     self.userId = userId
