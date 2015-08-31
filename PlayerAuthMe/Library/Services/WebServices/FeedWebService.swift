@@ -56,9 +56,42 @@ class FeedWebService: WebService {
               shareCount = result["shareCount"] as? Int,
               postData = result["data"] as? [String:AnyObject],
               commentsCount = result["commentsCount"] as? Int,
-              comments = result["comments"] as? [[String:AnyObject]],
+              commentsData = result["comments"] as? [[String:AnyObject]],
               likesCount = result["likesCount"] as? Int {
                 var comments = [Comment]()
+                for comment in commentsData {
+                  if let id = comment["id"] as? Int,
+                  userId = comment["user_id"] as? Int,
+                  activityUserId = comment["activity_user_id"] as? Int,
+                  activityId = comment["activity_id"] as? Int,
+                  data = comment["data"] as? [String:AnyObject],
+                  text = data["post"] as? String,
+                  raw = data["post_raw"] as? String,
+                  createdAtString = comment["created_at"] as? String,
+                  updatedAtString = comment["updated_at"] as? String,
+                  userIsBlocked = comment["userIsBlocked"] as? Bool,
+                  isLiked = comment["hasLiked"] as? Bool,
+                  url = comment["url"] as? String,
+                  showDelete = comment["showDelete"] as? Bool,
+                  showEdit = comment["showEdit"] as? Bool,
+                  isOwnComment = comment["isOwnComment"] as? Bool,
+                  likesCount = comment["likesCount"] as? Int,
+                  player = comment["user"] as? [String:AnyObject] {
+                    if let authorId = player["id"] as? Int,
+                    authorUsername = player["username"] as? String,
+                    authorAccountTypeString = player["account_type"] as? String,
+                    authorAccountType = AccountType(rawValue: authorAccountTypeString),
+                    authorAvatar = player["avatar"] as? String,
+                    authorFollowersCount = player["followers_count"] as? Int,
+                    authorIsFeatured = player["is_featured"] as? Bool,
+                    authorIsVerified = player["is_verified"] as? Bool,
+                    authorIsPrivate = player["is_private"] as? Bool {
+                      let author = Player(id: authorId, username: authorUsername, shortDescription: "", longDescription: "", coverUrl: "", avatarUrl: authorAvatar, isVerified: authorIsVerified, isCurrentUser: false, isFollowing: false, isFollowed: false, isFriend: false, followersCount: authorFollowersCount, followingCount: 0)
+                      let comment = Comment(id: id, userId: userId, activityUserId: activityUserId, activityId: activityId, createdAtString: createdAtString, updatedAtString: updatedAtString, userIsBlocked: userIsBlocked, isLiked: isLiked, url: url, showDelete: showDelete, showEdit: showEdit, isOwnComment: isOwnComment, likesCount: likesCount, text: text, raw: raw, user: author)
+                      comments.append(comment)
+                    }
+                  }
+                }
                 if let playerId = user["id"] as? Int,
                 username = user["username"] as? String,
                 accountTypeString = user["account_type"] as? String,
