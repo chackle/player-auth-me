@@ -10,7 +10,7 @@ var playerAuthMe = PlayerAuthMe.sharedInstance
     playerAuthMe.clientSecret("your_client_secret")
 ```
 
-# Authentication with username and password
+# Authentication with username/email and password
 The idea here is that we authenticate once with the player.me servers. Once a session is active the library handles all authenticated requests automatically. If `playerAuthMe.endSession()` is called, the session will no longer be active and any requests requiring authentication will fail.
 ```swift
 var playerAuthMe = PlayerAuthMe.sharedInstance
