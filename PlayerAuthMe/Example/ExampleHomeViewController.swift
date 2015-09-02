@@ -64,7 +64,7 @@ class ExampleHomeViewController: UIViewController {
       .onSuccess({ (posts) -> () in
         for post in posts {
           println("-------------------------\n")
-          println(post.user.username)
+          println(post.user.username) 
           if let game = post.data.game {
             println("(Playing \(game.title))")
           }
