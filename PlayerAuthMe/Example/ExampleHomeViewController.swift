@@ -62,7 +62,21 @@ class ExampleHomeViewController: UIViewController {
       
       playerAuthMe.requestFeedUsingSession(session, withLimit: 50, andPage: 0, fromSources: FeedSource.allValues)
       .onSuccess({ (posts) -> () in
-        println("posts \(posts)")
+        for post in posts {
+          println("-------------------------\n")
+          println(post.user.username)
+          if let game = post.data.game {
+            println("(Playing \(game.title))")
+          }
+          println("\(post.data.raw)\n")
+          if post.comments.count > 0 {
+            for comment in post.comments {
+              println("\(comment.user.username): \(comment.raw)\n")
+            }
+          } else {
+            println("- No Comments -")
+          }
+        }
       })
       .onFailure({ (error) -> () in
         println("Request Feed Error \(error)")
